@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "715837111091",
+    "project_id": "doyoursurvey-4274c",
+    "storage_bucket": "doyoursurvey-4274c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715837111091:android:b93c9d02369065562f9c46",
+        "android_client_info": {
+          "package_name": "com.qdegrees.doyoursurvey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715837111091-nm9j2do5lpkralv4548t8ohkdl5gptqf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qdegrees.doyoursurvey",
+            "certificate_hash": "f875e6e3ed560f30a77b37194cb8312e6971abd5"
+          }
+        },
+        {
+          "client_id": "715837111091-tlooslhm7ka317a0atflikfqnfnpjc16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdGv_aR5KoMl9sfaQfqfUc_8D_ZSGP7yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715837111091-tlooslhm7ka317a0atflikfqnfnpjc16.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">DoYourSurvey</string>
+    <string name="VersionName">1.0.18</string>
+    <string name="facebook_app_id">2508091959485474</string>
+    <string name="fb_login_protocol_scheme">fb2508091959485474</string>
+
+
+
+    <string name="PoweredBy"><![CDATA[Powered By <a href="https://www.qdegrees.com/"><u><b><font fgcolor=\'#D81B60\'>QDegrees Services</font></b></u></a>]]></string>
+    <string name="login_createAccount"><![CDATA[Forgot Password? <u><b><font color=\'#3053F4\'>Click Here</font></b></u>]]></string>
+    <string name="login_signup"><![CDATA[Click here to <u><b><font color=\'#3053F4\'>Signup</font></b></u>]]></string>
+    <string name="login"><![CDATA[Click here to <u><b><font color=\'#3053F4\'>Login</font></b></u>]]></string>
+    <string name="ok">ok</string>
+    <string name="yes">Yes</string>
+    <string name="No">No</string>
+
+    <string name="alert">Alert</string>
+    <string name="no_internet_connection">No Internet Connection.</string>
+    <string name="Error_Str">Something went wrong!! Please Try Again Later!!!</string>
+    <string name="title_activity_main_home">MainHomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_Dashboard">Dashboard</string>
+    <string name="menu_PanelProfile">Panel Profile</string>
+    <string name="menu_Rewards">Rewards</string>
+    <string name="menu_Blog">Blog</string>
+    <string name="menu_HelpCenter">Help Center</string>
+    <string name="menu_AccountSettings">Account Settings</string>
+    <string name="menu_SignOut">Sign Out</string>
+
+
+    <string name="question_type_text">text</string>
+    <string name="question_type_radio">radio</string>
+    <string name="question_type_checkbox">checkbox</string>
+    <string name="question_type_matrix_check">matrix_rating_scale</string>
+
+
+    <string name="Gender_Male">Male</string>
+    <string name="Gender_FeMale">Female</string>
+    <string name="Gender_Transgender">Transgender</string>
+
+    <string name="default_web_client_id">459980841468-nh5mdjpa54pf626uej1c0tehi32guk6s.apps.googleusercontent.com</string>
+
+    <string name="refer_a_friend">Refer A Friend !! You get 100 Points, Friend get 100 points</string>
+    <string name="refer_a_friend_moreWay">More Ways to Invite Your  Friends:</string>
+    <string name="survey_not_Available">No Survey at this time. We will notify you when a new survey is available.</string>
+
+    <string name="refer_a_Friend_New">make friendship truly rewarding</string>
+    <string name="refer_a_Friend_NewSecond">Introduce friends to DOYOURSURVEY by referring and earn exclusive rewards</string>
+
+
+    <string name="Referal_Text">Hi ! Register on DoYourSurvey using this Referal Code : </string>
+    <string name="Referal_text_2">\nYou will get 100 points on Signup. \nURL: https://doyoursurvey.com/#/register  and \nApp Link: https://ply.gl/com.qdegrees.doyoursurvey</string>
+
+    <string name="refer_whatsapp_not_found">Whatsapp have not been installed.</string>
+    <string name="refer_title">Refer a Friend.</string>
+
+
+    <string name="Refer_Survey_Title">Refer a Survey to Your Friend!</string>
+    <string name="Refer_Survey_Description">Refer a survey &amp; earn points while register and take survey</string>
+    <string name="Refer_Survey_ShareWith">Share With:</string>
+
+
+</resources>

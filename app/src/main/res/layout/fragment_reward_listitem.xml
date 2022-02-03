@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_marginBottom="02pt"
+    android:gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:orientation="vertical"
+        android:gravity="center">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="02pt"
+            app:cardCornerRadius="25sp"
+            app:cardElevation="07dp"
+            android:elevation="4dp"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            android:dividerHeight="0.0px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:cardPreventCornerOverlap="false"
+            android:id="@+id/cv_fragment_home_Pointslistitem"
+            android:layout_gravity="center"
+            android:layout_marginTop="02pt"
+            android:layout_marginBottom="02pt"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/tv_fragmentReward_ListItem_Points"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="02pt"
+                    android:paddingTop="05pt"
+                    android:paddingRight="02pt"
+                    android:paddingBottom="05pt"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="02pt"
+            app:cardCornerRadius="25sp"
+            app:cardElevation="07dp"
+            android:elevation="4dp"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            android:dividerHeight="0.0px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:cardPreventCornerOverlap="false"
+            android:id="@+id/cv_fragment_home_Statuslistitem"
+            android:layout_gravity="center"
+            android:layout_marginTop="07pt"
+            android:layout_marginBottom="02pt"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/tv_fragmentReward_ListItem_Status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="02pt"
+                    android:paddingTop="05pt"
+                    android:paddingRight="02pt"
+                    android:paddingBottom="05pt"
+                    android:text="Pending"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/yellow"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.8"
+        android:layout_margin="02pt"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="05dp"
+        android:elevation="4dp"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        android:dividerHeight="0.0px"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:cardPreventCornerOverlap="false"
+        android:id="@+id/cv_fragment_home_listitem"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="05pt">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:src="@drawable/amazon_logo"
+                android:id="@+id/iv_fragmentreward_voucherImage"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:padding="02pt"
+                    android:text="Voucher Code"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/tv_fragmentRewardListItem_VoucherCode"
+                    android:padding="02pt"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/tv_fragmentRewardListItem_Date"
+                    android:padding="02pt"
+                    android:gravity="center_vertical|end"
+                    />
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</LinearLayout>

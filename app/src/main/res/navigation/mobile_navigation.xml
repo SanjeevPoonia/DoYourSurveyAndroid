@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.qdegrees.activity.ui.dashboard.DashboardFragment"
+        android:label="@string/menu_Dashboard"
+        tools:layout="@layout/fragment_home" />
+
+   <!-- <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.qdegrees.activity.ui.panelprofile.PanelProfileFragment"
+        android:label="@string/menu_PanelProfile"
+        tools:layout="@layout/fragment_panelprofile" />-->
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.qdegrees.activity.ui.rewards.RewardsFragment"
+        android:label="@string/menu_Rewards"
+        tools:layout="@layout/fragment_rewards" />
+    <fragment
+        android:id="@+id/nav_blogs"
+        android:name="com.qdegrees.activity.ui.blogs.BlogFragment"
+        android:label="@string/menu_Blog"
+        tools:layout="@layout/fragment_blogs" />
+    <fragment
+        android:id="@+id/nav_Help"
+        android:name="com.qdegrees.activity.ui.helpcenter.HelpCenterfragment"
+        android:label="@string/menu_HelpCenter"
+        tools:layout="@layout/fragment_helpcenter" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.qdegrees.activity.ui.settings.SettingsFragment"
+        android:label="@string/menu_AccountSettings"
+        tools:layout="@layout/fragment_accountsetting" />
+    <fragment
+        android:id="@+id/nav_signout"
+        android:name="com.qdegrees.activity.ui.signout.SignoutFragment"
+        android:label="@string/menu_SignOut"
+        tools:layout="@layout/fragment_logout" />
+</navigation>

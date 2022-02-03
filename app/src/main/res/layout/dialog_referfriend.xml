@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/refer_dialog_background"
+        android:paddingTop="15pt"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="05pt"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:text="@string/refer_a_Friend_New"
+                    android:textAlignment="textStart"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/ReferSecondry"
+                    android:text="@string/refer_a_Friend_NewSecond"
+                    android:textAlignment="textStart"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="60pt"
+                    android:layout_height="50pt"
+                    android:layout_margin="05pt"
+                    android:src="@drawable/refer_friend_gift"
+                    >
+
+                </ImageView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="10dp"
+            android:elevation="8dp"
+            app:cardBackgroundColor="@color/black"
+            android:dividerHeight="0.0px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:cardPreventCornerOverlap="false"
+            android:id="@+id/cv_refer_whatsapp"
+            android:layout_margin="05pt"
+            >
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:padding="02pt">
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_whatsapp"
+                   android:layout_margin="02pt"
+                   android:id="@+id/iv_refer_whatsapp"
+                   />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textColor="@color/white"
+                   android:textStyle="bold"
+                   android:textAppearance="?android:attr/textAppearanceMedium"
+                   android:textAllCaps="false"
+                   android:text="Refer via Whatsapp"
+                   android:padding="02pt"
+                   />
+
+           </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/refer_dialog_secondry_background"
+            android:paddingTop="15pt"
+            android:paddingLeft="05pt"
+            android:paddingRight="05pt"
+            android:paddingBottom="05pt"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+
+                    >
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittext_background_styles"
+                        android:inputType="textPersonName|textCapWords"
+                        android:imeOptions="actionDone"
+                        android:id="@+id/et_refer_name"
+                        android:textColor="@color/black"
+                        android:hint="Name"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        />
+                    <View
+                        android:layout_width="01pt"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="01pt"
+                        android:layout_marginRight="05pt"
+                        android:background="@color/view_color"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_person_add_alt_1_24"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="01pt"
+                    android:layout_marginTop="02pt"
+                    android:layout_marginBottom="02pt"
+                    android:background="@color/view_color"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="05pt"
+                    >
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittext_background_styles"
+                        android:inputType="textEmailAddress"
+                        android:imeOptions="actionDone"
+                        android:id="@+id/et_refer_Email"
+                        android:textColor="@color/black"
+                        android:hint="Enter Email"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        />
+                    <View
+                        android:layout_width="01pt"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="01pt"
+                        android:layout_marginRight="05pt"
+                        android:background="@color/view_color"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_mail_outline_24"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="01pt"
+                    android:layout_marginTop="02pt"
+                    android:layout_marginBottom="02pt"
+                    android:background="@color/view_color"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="05pt"
+                    app:cardCornerRadius="25dp"
+                    app:cardElevation="10dp"
+                    android:elevation="8dp"
+                    app:cardBackgroundColor="@color/colorAccent"
+                    android:dividerHeight="0.0px"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    app:cardPreventCornerOverlap="false"
+                    android:id="@+id/cv_refer_submit"
+                    android:layout_marginTop="10pt"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAllCaps="false"
+                        android:text="Submit"
+                        android:paddingEnd="20pt"
+                        android:paddingStart="20pt"
+                        android:paddingTop="05pt"
+                        android:paddingBottom="05pt"
+                        />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="05pt"
+                android:textColor="@color/black"
+                android:layout_marginTop="05pt"
+                android:text="@string/refer_a_friend_moreWay"
+                android:textAlignment="center"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="02pt"
+                android:layout_marginTop="05pt"
+                android:layout_marginBottom="05pt">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_facebook"
+                    android:layout_margin="02pt"
+                    android:id="@+id/iv_refer_facebook"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_twitter"
+                    android:layout_margin="02pt"
+                    android:id="@+id/iv_refer_twitter"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_linkedin"
+                    android:layout_margin="02pt"
+                    android:id="@+id/iv_refer_linkedin"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_email_refer"
+                    android:layout_margin="02pt"
+                    android:id="@+id/iv_refer_mail"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

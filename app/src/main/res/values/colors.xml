@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+
+
+
+    <color name="colorPrimary">#5271FF</color>
+    <color name="colorPrimaryDark">#3053F4</color>
+    <color name="colorPrimaryCenter">#516FF8</color>
+    <color name="colorAccent">#FF00A1</color>
+
+    <color name="Transparent">#00000000</color>
+    <color name="view_color">#93A6A2</color>
+    <color name="ReferTitle">#F8C2E4</color>
+    <color name="ReferPrimary">#F8E7F2</color>
+    <color name="ReferSecondry">#F8F1F6</color>
+
+    <color name="Google_Color">#BD0000</color>
+    <color name="yellow">#FF7903</color>
+    <color name="green">#024C0E</color>
+
+    <color name="refer_card_end">#647FFA</color>
+
+    <color name="Signout_start">#FF00A1</color>
+    <color name="Signout_end">#CF0183</color>
+
+    <color name="text_white_low">#EAE7E7</color>
+
+    <color name="refer_survey_end_color">#FD2AAF</color>
+
+
+</resources>
