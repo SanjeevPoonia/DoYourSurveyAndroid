@@ -62,14 +62,14 @@ public class RewardsFragment extends Fragment {
     protected ApiService apiService;
     String sUserEmail="",sMobileNumber="";
     String PointEarned="0",PointReedem="0",PointAvailable="0",CompletedSurvey="0";
-    TextView tvPointEarned,tvPointRedeem,tvPointAvailable,tvCompletedSurvey,NoDataText;
+    TextView tvPointEarned,tvPointRedeem,tvPointAvailable,tvCompletedSurvey,NoDataText,tvAvailablePointWorth,tvRedeemPointWorth;
     RecyclerView rewardRecyclerView;
     List<RewardHistoryListItem> RewardHistoryList= new ArrayList<>();
     MyAssignedListAdapter myAssignedListAdapter;
     CardView ReedemPoints;
-    /*****************Demo Screens***************************/
-    RelativeLayout DemoLayout;
-    Button demoButton;
+
+    TextView tvLastUpdatedOn;
+
 
 
     /******************************************************/
@@ -88,21 +88,20 @@ public class RewardsFragment extends Fragment {
         tvPointRedeem=root.findViewById(R.id.tvFragmentRewardPointRedeemed);
         tvPointAvailable=root.findViewById(R.id.tvFragmentRewardPointAvailable);
         tvCompletedSurvey=root.findViewById(R.id.tvFragmentRewardCompletedSurvey);
+        tvAvailablePointWorth=root.findViewById(R.id.tvFragmentRewardPointAvailableWorth);
+        tvRedeemPointWorth=root.findViewById(R.id.tvRewardFragRedeemPointWorth);
+        tvLastUpdatedOn=root.findViewById(R.id.tv_rewardFrag_lastUpdated);
+
         NoDataText=root.findViewById(R.id.tvFragmentRewardNoDataText);
         ReedemPoints=root.findViewById(R.id.cv_Fragment_Reward_ReedemPoints);
         rewardRecyclerView=root.findViewById(R.id.rvFragmentReward);
 
-        DemoLayout=root.findViewById(R.id.Fragment_Reward_DemoLayout);
-        demoButton=root.findViewById(R.id.Fragment_Reward_NextBtn);
 
-        demoButton.setOnClickListener(v->{
-            SharedPreferencesRepository.getDataManagerInstance().setRewardDemoDone();
-            DemoLayout.setVisibility(View.GONE);
-        });
 
 
         LinearLayoutManager llm= new LinearLayoutManager(mActivity);
         rewardRecyclerView.setLayoutManager(llm);
+        ReedemPoints.setVisibility(View.GONE);
         ReedemPoints.setOnClickListener(v->{
             int points=Integer.parseInt(PointAvailable);
 
@@ -136,9 +135,41 @@ public class RewardsFragment extends Fragment {
 
                             }
                             tvPointEarned.setText(PointEarned);
-                            tvPointRedeem.setText(PointReedem);
-                            tvPointAvailable.setText(PointAvailable);
+                            //tvPointRedeem.setText(PointReedem);
+                           // tvPointAvailable.setText(PointAvailable);
                             tvCompletedSurvey.setText(CompletedSurvey);
+
+                            Log.e("Points Available",PointAvailable);
+                            Log.e("points Earned", PointReedem);
+                            if(TextUtils.isEmpty(PointAvailable)||PointAvailable=="0"){
+                                tvPointAvailable.setText("0");
+                                tvAvailablePointWorth.setText("₹0");
+                            }else{
+                                tvPointAvailable.setText(PointAvailable);
+                                double pointsAvailable = Integer.parseInt(PointAvailable);
+                                double pointworth=pointsAvailable/250;
+                                double po= (double)Math.round(pointworth*100) ;
+
+
+                                tvAvailablePointWorth.setText("₹ "+po);
+                            }
+                            if(TextUtils.isEmpty(PointReedem) || PointReedem == "0"){
+                                tvPointRedeem.setText("0");
+                                tvRedeemPointWorth.setText("₹0");
+                            }else{
+                                tvPointRedeem.setText(PointReedem);
+                                double pointsAvailable = Integer.parseInt(PointReedem);
+                                double pointworth=pointsAvailable/250;
+                                double po=(double)Math.round(pointworth*100);
+
+                                tvRedeemPointWorth.setText("₹ "+pointworth);
+                            }
+                            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy, EEE, hh:mm a", Locale.getDefault());
+                            String currentDateandTime = sdf.format(new Date());
+
+
+                            tvLastUpdatedOn.setText(currentDateandTime);
+
                             Utility.hideDialog(mActivity);
                             getReedemHisotry();
 
@@ -203,11 +234,7 @@ public class RewardsFragment extends Fragment {
                         rewardRecyclerView.setAdapter(myAssignedListAdapter);
                         myAssignedListAdapter.notifyDataSetChanged();
 
-                        if(SharedPreferencesRepository.getDataManagerInstance().IsRewardDemoRequired()){
-                            DemoLayout.setVisibility(View.VISIBLE);
-                        }else{
-                            DemoLayout.setVisibility(View.GONE);
-                        }
+
 
 
                     }else{
@@ -426,7 +453,7 @@ public class RewardsFragment extends Fragment {
                             Toast.makeText(mActivity, "Please Select Voucher Type", Toast.LENGTH_SHORT).show();
                         }
                     }else{
-                        pointEdit.setError("Minimum 1000 Points Required For Reedem");
+                        pointEdit.setError("Minimum 1000 Points Required For Redeem");
                         pointEdit.requestFocus();
                     }
                 }else{

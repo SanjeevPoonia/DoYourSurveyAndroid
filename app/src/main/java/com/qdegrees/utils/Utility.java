@@ -2,6 +2,7 @@ package com.qdegrees.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +11,8 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -17,9 +20,17 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.Gravity;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.qdegrees.doyoursurvey.R;
 
 import java.io.UnsupportedEncodingException;
@@ -136,6 +147,139 @@ public class Utility {
         matcher = pattern.matcher(password);
 
         return matcher.matches();
+
+    }
+
+    /*********************************************/
+
+    public static void referNewDialog(Activity mActivity,String ReferCode){
+        Dialog referDialog= new Dialog(mActivity);
+        referDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        referDialog.setContentView(R.layout.dialog_refernearn);
+        String ReferalString=mActivity.getResources().getString(R.string.Referal_Text)+ReferCode+""+mActivity.getResources().getString(R.string.Referal_text_2);
+        String Applink="https://doyoursurvey.com/#/register";
+        Log.e("ReferalString",ReferalString);
+
+        LottieAnimationView animView= referDialog.findViewById(R.id.animLottie);
+        animView.playAnimation();
+
+        CardView whatsAppCard=referDialog.findViewById(R.id.cv_referNearn_whatsapp);
+        ImageView facebookImage=referDialog.findViewById(R.id.iv_referNearn_facebook);
+        ImageView twitterImage=referDialog.findViewById(R.id.iv_referNearn_twitter);
+        ImageView linkdinImage=referDialog.findViewById(R.id.iv_referNearn_linkedin);
+        ImageView mailImage=referDialog.findViewById(R.id.iv_referNearn_mail);
+        ImageView ivCloseDialog=referDialog.findViewById(R.id.ivCloseReferDialog);
+
+        ivCloseDialog.setOnClickListener(v->{
+            referDialog.dismiss();
+        });
+
+        whatsAppCard.setOnClickListener(v->{
+           shareWhatsapp(mActivity,ReferalString,"");
+            referDialog.dismiss();
+        });
+        facebookImage.setOnClickListener(v->{
+
+           shareFacebook(mActivity,ReferalString,Applink);
+            referDialog.dismiss();
+        });
+        twitterImage.setOnClickListener(v->{
+           shareTwitter(mActivity,ReferalString,ReferalString,"","");
+            referDialog.dismiss();
+        });
+        linkdinImage.setOnClickListener(v->{
+           shareLinkedin(mActivity,ReferalString);
+            referDialog.dismiss();
+        });
+        mailImage.setOnClickListener(v->{
+            shareOnMail(mActivity,"Do Survey and Earn Points",ReferalString);
+            referDialog.dismiss();
+        });
+
+
+        referDialog.show();
+        ColorDrawable drawable = new ColorDrawable(Color.TRANSPARENT);
+        referDialog.getWindow().setBackgroundDrawable(drawable);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(referDialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.gravity = Gravity.BOTTOM;
+        lp.windowAnimations = R.style.DialogAnimation;
+        referDialog.getWindow().setAttributes(lp);
+    }
+
+    /*********************************************/
+
+    public static void ReferSurveyAFriendDialog(Activity mActivity,String surveyId,String referCode,String referPoint,String surveyPoints){
+        Dialog referDialog= new Dialog(mActivity);
+        referDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        referDialog.setContentView(R.layout.dialog_refersurvey_new);
+        String referStr="You get "+referPoint+" Points,Friend gets "+surveyPoints+" Points";
+        LottieAnimationView animView= referDialog.findViewById(R.id.animLottie_refer);
+        animView.playAnimation();
+
+
+        String Applink="https://doyoursurvey.com/#/register/attemp-survey-dyn/"+surveyId+"?surveyReferCode="+referCode;
+        Log.e("ReferalString",Applink);
+
+        CardView copyCardView=referDialog.findViewById(R.id.cv_refersurveyNew_copy);
+        TextView referText=referDialog.findViewById(R.id.tv_Dialog_ReferSurveyNew_PointsText);
+        referText.setText(referStr);
+        ImageView facebookImage=referDialog.findViewById(R.id.iv_refersurveynew_facebook);
+        ImageView twitterImage=referDialog.findViewById(R.id.iv_refersurveynew_twitter);
+        ImageView whatsappImage=referDialog.findViewById(R.id.iv_refersurveynew_whatsapp);
+        ImageView mailImage=referDialog.findViewById(R.id.iv_refersurveynew_mail);
+
+        ImageView close = referDialog.findViewById(R.id.ivCloseReferSurveyDialog);
+
+        close.setOnClickListener(v->{
+            referDialog.dismiss();
+        });
+
+        copyCardView.setOnClickListener(v->{
+            setClipboard(mActivity,Applink);
+        });
+
+        whatsappImage.setOnClickListener(v->{
+            Utility.shareWhatsapp(mActivity,"Refer Survey To Your Friends",Applink+"&trk=wp");
+            referDialog.dismiss();
+        });
+        facebookImage.setOnClickListener(v->{
+            Utility.shareFacebook(mActivity,"Refer Survey To Your Friends",Applink+"&trk=fk");
+            referDialog.dismiss();
+        });
+        twitterImage.setOnClickListener(v->{
+            Utility.shareTwitter(mActivity, "Refer Survey To Your Friends",Applink+"&trk=tr","","");
+            referDialog.dismiss();
+        });
+        mailImage.setOnClickListener(v->{
+            Utility.shareOnMail(mActivity,"Refer Survey To Your Friends",Applink+"&tk=el");
+            referDialog.dismiss();
+        });
+
+
+
+
+        referDialog.show();
+        ColorDrawable drawable = new ColorDrawable(Color.TRANSPARENT);
+        referDialog.getWindow().setBackgroundDrawable(drawable);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(referDialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.gravity = Gravity.BOTTOM;
+        lp.windowAnimations = R.style.DialogAnimation;
+        referDialog.getWindow().setAttributes(lp);
+    }
+
+    private static void setClipboard(Context context, String text) {
+
+        android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", text);
+        clipboard.setPrimaryClip(clip);
+
+        Toast.makeText(context, "Refer code Copied", Toast.LENGTH_SHORT).show();
 
     }
 

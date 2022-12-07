@@ -49,6 +49,7 @@ public interface Tags {
     String RememberToken="remember_token";
     String IsDashboardDemoDone="isdashboard_demo";
     String IsRewardDemoDone="isreward_demo";
+    String Bio="bio";
 
 
 }

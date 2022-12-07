@@ -14,23 +14,31 @@ import com.qdegrees.network.request.RewardPostData;
 import com.qdegrees.network.request.SignupVerifyEmailRequest;
 import com.qdegrees.network.request.SocialLogin_Request;
 import com.qdegrees.network.request.SubmitSurvey_Request;
+import com.qdegrees.network.request.UpdateProfilePostData;
 import com.qdegrees.network.request.VerifyOtpRequest;
 import com.qdegrees.network.response.DashboardProfileResponse;
 import com.qdegrees.network.response.DashboardResponse;
+import com.qdegrees.network.response.DashboardSurveyResponse;
 import com.qdegrees.network.response.GenerateSurveyReferCodeResponse;
 import com.qdegrees.network.response.GeneratedSurveyReferCode_Response;
 import com.qdegrees.network.response.LoginResponse;
 import com.qdegrees.network.response.PointRedeemedHistory_Response;
 import com.qdegrees.network.response.ProfileQuestion_Response;
+import com.qdegrees.network.response.ProfileUploadResponse;
 import com.qdegrees.network.response.ReedemPointResponse;
 import com.qdegrees.network.response.ShareableSurveyResponse;
 import com.qdegrees.network.response.SignupVerifyEmailReqResponse;
+import com.qdegrees.network.response.UpdateProfileResponse;
 import com.qdegrees.network.response.VerifyOtpResponse;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+
 public interface ApiService {
     @POST("client/login")
     Call<LoginResponse> doLogin(@Body LoginPostData loginPostData);
@@ -80,6 +88,20 @@ public interface ApiService {
     Call<GenerateSurveyReferCodeResponse>generateSurveyReferCode(@Body GenerateSurveyReferCodeRequest generateSurveyReferCodeRequest);
     @POST("survey/getGenerateSurveyReferCode")
     Call<GeneratedSurveyReferCode_Response>getGeneratedReferalCode(@Body GenerateSurveyReferCodeRequest generateSurveyReferCodeRequest);
+
+
+    @POST("survey/getDynReferedSurvey")
+    Call<DashboardSurveyResponse>getDashboardSurveyList(@Body DashboardPostData dashboardPostData);
+
+    @POST("dashboard/updateProfile")
+    Call<UpdateProfileResponse> updateProfile(@Body UpdateProfilePostData updateProfilePostData);
+
+
+    @Multipart
+    @POST("dashboard/changeProfileImg")
+    Call<ProfileUploadResponse> uploadProfileImage(@Part("id")String id, @Part MultipartBody.Part image);
+
+
 
 
 }

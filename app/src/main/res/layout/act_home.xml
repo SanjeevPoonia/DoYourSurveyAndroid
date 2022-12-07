@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:background="@color/get_touch_back">
+    <LinearLayout
+        android:id="@+id/relTool"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/colorPrimary"
+        >
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:text="@string/app_name"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:id="@+id/tvHomeTitle"
+            />
+
+
+
+        <LinearLayout
+            android:id="@+id/NotificationCountLL"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/ivNoti"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@drawable/icon_background"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivNoti"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:src="@drawable/notification_icon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNotiCounts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/LogoutLL"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/ivNoti"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@drawable/icon_background"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLogout"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_logout"
+                android:tint="@color/white"/>
+
+
+        </LinearLayout>
+
+        <!--  <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/ivNoti"
+              android:layout_width="@dimen/_30sdp"
+              android:layout_height="@dimen/_30sdp"
+              android:layout_alignParentEnd="true"
+              android:background="@drawable/side_menu_background"
+              android:padding="@dimen/_5sdp"
+              android:src="@drawable/notification_icon" />-->
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="62dp"
+        android:id="@+id/flFragment">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:background="@drawable/icon_back_round_white"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/rel"
+        android:gravity="center"
+        android:layout_marginBottom="-28dp"
+        android:id="@+id/LL_Home_Redeem">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAdd"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_reedem_home"
+            android:tint="@color/colorPrimary"
+            android:padding="05dp"
+            android:elevation="3dp"
+           />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvInviteReqCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/redeem"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/rel">
+        <com.qdegrees.utils.CurvedBottomNavigationView
+            android:id="@+id/customBottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:elevation="2dp"
+            app:itemIconTint="@color/bottom_nav_color"
+            app:itemTextColor="@color/bottom_nav_color"
+            />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

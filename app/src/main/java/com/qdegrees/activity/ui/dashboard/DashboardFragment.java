@@ -31,11 +31,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.qdegrees.activity.ui.panelprofile.PanelProfileFragment;
 import com.qdegrees.activity.ui.panelprofile.ProfileSurveyListItem;
 import com.qdegrees.activity.ui.survey.ProfileSurvey_AttemptActivity;
@@ -49,6 +51,7 @@ import com.qdegrees.network.request.GenerateSurveyReferCodeRequest;
 import com.qdegrees.network.request.ReferAFriend_Request;
 import com.qdegrees.network.response.DashboardProfileResponse;
 import com.qdegrees.network.response.DashboardResponse;
+import com.qdegrees.network.response.DashboardSurveyResponse;
 import com.qdegrees.network.response.GenerateSurveyReferCodeResponse;
 import com.qdegrees.network.response.GeneratedSurveyReferCode_Response;
 import com.qdegrees.network.response.ReedemPointResponse;
@@ -56,8 +59,11 @@ import com.qdegrees.network.response.ShareableSurveyResponse;
 import com.qdegrees.utils.Utility;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import bolts.AppLink;
 import retrofit2.Call;
@@ -68,23 +74,26 @@ public class DashboardFragment extends Fragment {
     Activity mActivity;
     RecyclerView recyclerView,shareableSurveyRecyclerView;
     protected ApiService apiService;
-    String sUserEmail="";
+    String sUserEmail="",sUserCity="";
     List<Survey_Listitem_Object> surveyList= new ArrayList<>();
     List<Shareable_Survey_ListItem_Object>shareAble_SurveyList= new ArrayList<>();
-    ShareableListAdapter shareableListAdapter;
+    List<Dashboard_Survey_ListItem_Object> dashboardSurveyList= new ArrayList<>();
     MyAssignedListAdapter myAssignedListAdapter;
 
     String PointEarned="0",PointReedem="0",PointAvailable="0",CompletedSurvey="0";
     TextView tvPointEarned,tvPointRedeem,tvPointAvailable,tvCompletedSurvey;
+    TextView tvPointsWorth,tvReedemPointsWorth;
+    TextView tvLastUpdatedOn;
     LinearLayout NoDataLayout,ShareableLayout;
     CardView RefreshCardView;
+    ImageView ivRefereshProfile;
 
     /**************************Profile*********************/
 
-    CardView cvProfile;
+
     int ProfilePercentage=0;
     ProgressBar progressBar;
-    TextView tvPercentage,tvComplete,tvClickHere;
+    TextView tvPercentage;
     List<ProfileSurveyListItem> ProfileSurveyList= new ArrayList<>();
     Dialog profileDialog;
 
@@ -95,7 +104,7 @@ public class DashboardFragment extends Fragment {
 
     /****************Refer Friend*******************************/
 
-    CardView referFriend;
+    RelativeLayout referFriend;
     String ReferCode="";
 
 
@@ -109,6 +118,9 @@ public class DashboardFragment extends Fragment {
     Button demoButton;
     int demoPosition=1;
 
+    AppCompatTextView tvName,tvLocation;
+    CardView cvCompleteProfile;
+
 
 
 
@@ -120,6 +132,7 @@ public class DashboardFragment extends Fragment {
         sUserEmail= SharedPreferencesRepository.getDataManagerInstance().getSessionEmail();
         ReferCode=SharedPreferencesRepository.getDataManagerInstance().getSessionReferCode();
         sUserName=SharedPreferencesRepository.getDataManagerInstance().getSessionname()+" "+SharedPreferencesRepository.getDataManagerInstance().getSessionLastname();
+        sUserCity=SharedPreferencesRepository.getDataManagerInstance().getSessionCity();
 
 
         apiService = RetrofitAPIClient.getRetrofitClient();
@@ -132,16 +145,30 @@ public class DashboardFragment extends Fragment {
         recyclerView.setLayoutManager(llm);
         shareableSurveyRecyclerView.setLayoutManager(sllm);
 
+
+        tvName=root.findViewById(R.id.tvFragDashName);
+        tvName.setText(sUserName);
+        cvCompleteProfile=root.findViewById(R.id.cv_dashboard_CompleteProfile);
+
+
         tvPointEarned=root.findViewById(R.id.tvFragmentHomePointEarned);
         tvPointRedeem=root.findViewById(R.id.tvFragmentHomePointRedeemed);
         tvPointAvailable=root.findViewById(R.id.tvFragmentHomePointAvailable);
         tvCompletedSurvey=root.findViewById(R.id.tvFragmentHomeCompletedSurvey);
+        tvPointsWorth=root.findViewById(R.id.tv_Total_points_Worth);
+        tvReedemPointsWorth=root.findViewById(R.id.tv_reedem_points_worth);
+        tvLastUpdatedOn=root.findViewById(R.id.tvLastUpdatedOn);
+        ivRefereshProfile=root.findViewById(R.id.ivReferechProfile);
+        tvLocation=root.findViewById(R.id.actv_home_city);
+
+
+        tvLocation.setText(sUserCity);
+
+
 
         progressBar=root.findViewById(R.id.pbFragmentHome_Profile);
         tvPercentage=root.findViewById(R.id.tvFragmentHome_Percentage);
-        tvComplete=root.findViewById(R.id.tv_fragmentHome_ProfileTitle);
-        tvClickHere=root.findViewById(R.id.tv_fragmenthome_ClickHere);
-        cvProfile=root.findViewById(R.id.cv_fragmentHome_Profile);
+
         referFriend=root.findViewById(R.id.cv_dashboard_referbtn);
 
         NoDataLayout=root.findViewById(R.id.llFragmentHomeNoData);
@@ -174,7 +201,8 @@ public class DashboardFragment extends Fragment {
             getProfileDashboard();
         });
 
-        cvProfile.setOnClickListener(v->{
+
+        cvCompleteProfile.setOnClickListener(v->{
             Log.e("profileSurvey",ProfileSurveyList.size()+"");
             if(ProfileSurveyList.size()>0){
                 createProfileDialog();
@@ -182,13 +210,125 @@ public class DashboardFragment extends Fragment {
         });
 
         referFriend.setOnClickListener(v->{
-            ReferAFriendDialog();
+            //ReferAFriendDialog();
+           // referNewDialog();
+            Utility.referNewDialog(mActivity,ReferCode);
+        });
+
+        ivRefereshProfile.setOnClickListener(v->{
+            getProfileDashboard();
         });
 
         getProfileDashboard();
 
 
         return root;
+    }
+
+    private void getDashboardSurvey(){
+        if(Utility.isNetworkAvailable(mActivity)){
+            Utility.showDialog(mActivity);
+            apiService.getDashboardSurveyList(new DashboardPostData(sUserEmail)).enqueue(new Callback<DashboardSurveyResponse>() {
+                @Override
+                public void onResponse(Call<DashboardSurveyResponse> call, Response<DashboardSurveyResponse> response) {
+                    try {
+                        DashboardSurveyResponse dashboardResponse = response.body();
+                        Log.e("ResponseSurvey", dashboardResponse.toString());
+                        int code = dashboardResponse.status;
+                        if (code == 200) {
+                           // surveyList.clear();
+                            dashboardSurveyList.clear();
+                            List<DashboardSurveyResponse.Data> dataList = dashboardResponse.data;
+                            for (int i = 0; i < dataList.size(); i++) {
+                                String _id = dataList.get(i).id;
+                                String surveyId = dataList.get(i).survey_id;
+                                String surveyName = dataList.get(i).survey_name;
+                                String surveyPoints = dataList.get(i).points;
+                                String surveyStatus = dataList.get(i).status;
+                                String surveyType = dataList.get(i).survey_type;
+                                String surveyDate = dataList.get(i).date;
+                                String referPoints=dataList.get(i).refer_point;
+                                String accessSurveyCXM=dataList.get(i).access_survey_cxm;
+                                boolean referApplication=dataList.get(i).refer_applicable;
+                                int isShareable=dataList.get(i).is_shareable;
+                                int isAttemptable=dataList.get(i).is_attempteable;
+
+
+                                List<SurveyQuestions_ListItem> QuestionList = new ArrayList<>();
+                                List<DashboardSurveyResponse.Questions> questions = dataList.get(i).Questions;
+                                for (int j = 0; j < questions.size(); j++) {
+                                    String Idstr = questions.get(j).id;
+                                    String Ques = questions.get(j).question;
+                                    String queMsg = questions.get(j).que_message;
+                                    String selection = questions.get(j).selection;
+                                    String type = questions.get(j).type;
+                                    String status = questions.get(j).status;
+                                    String conditions = questions.get(j).condition;
+                                    String profiling=questions.get(j).profiling;
+                                    String dynamicSelection=questions.get(j).dynamicSelection;
+                                    String minSelec=questions.get(j).min_selection;
+                                    String maxSelec=questions.get(j).max_selection;
+                                    List<String> requiredOnePf=new ArrayList<>();
+                                    requiredOnePf=questions.get(j).requiredAnyOneFrom;
+
+                                    boolean isResponseApplica=questions.get(j).is_response_count_applicable;
+                                    boolean showHideAppli=questions.get(j).show_hide_applicable;
+                                    String showHideTargetId=questions.get(j).show_hide_applicable_target_id;
+
+                                    List<SurveyOptions_ListItem> OptionsList = new ArrayList<>();
+                                    List<DashboardSurveyResponse.Options> options = questions.get(j).Options;
+
+                                    for (int k = 0; k < options.size(); k++) {
+                                        String option = options.get(k).option;
+                                        String actionId = options.get(k).action_id;
+                                        String textBox = options.get(k).text_box;
+                                        int responseLimit=options.get(k).response_limit;
+
+                                        List<String> coloums=new ArrayList<>();
+                                        coloums=options.get(k).coloumns;
+
+
+                                        List<SurveyOptions_HideShow_LIst> ShowHideList= new ArrayList<>();
+                                        List<DashboardSurveyResponse.ShowHideOption> showOp=options.get(k).showHideOptions;
+                                        if(showOp!=null) {
+                                            for (int l = 0; l < showOp.size(); l++) {
+                                                String ProductName = showOp.get(l).product_name;
+                                                boolean ProductValue = showOp.get(l).product_value;
+                                                ShowHideList.add(new SurveyOptions_HideShow_LIst(ProductName, ProductValue));
+                                            }
+                                        }
+
+
+                                        OptionsList.add(new SurveyOptions_ListItem(option, actionId, textBox,responseLimit,ShowHideList,true,coloums));
+                                    }
+                                    QuestionList.add(new SurveyQuestions_ListItem(Idstr, Ques, queMsg, selection, type, status, conditions, OptionsList,dynamicSelection,minSelec,maxSelec,requiredOnePf,profiling,isResponseApplica,showHideAppli,showHideTargetId));
+                                }
+                                dashboardSurveyList.add(new Dashboard_Survey_ListItem_Object(_id,surveyName,surveyId,surveyPoints,surveyStatus,surveyType,surveyDate,referPoints,accessSurveyCXM,referApplication,isShareable,isAttemptable,QuestionList));
+
+                               // surveyList.add(new Survey_Listitem_Object(_id, surveyName, surveyId, surveyPoints, surveyStatus, surveyType, surveyDate, QuestionList));
+                            }
+                            Utility.hideDialog(mActivity);
+                            setDataOnView();
+
+                        } else {
+                            Utility.showAlertDialog(mActivity, "Error!!", "Something went wrong!!");
+                            Utility.hideDialog(mActivity);
+                        }
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        Toast.makeText(mActivity, "Something went wrong!! Please Try Again.", Toast.LENGTH_SHORT).show();
+                        Utility.hideDialog(mActivity);
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<DashboardSurveyResponse> call, Throwable t) {
+                    Toast.makeText(mActivity, "Something went wrong!! Please Try Again.", Toast.LENGTH_SHORT).show();
+                    Utility.hideDialog(mActivity);
+                }
+            });
+        }
     }
 
     private void getDashboardData(){
@@ -295,11 +435,11 @@ public class DashboardFragment extends Fragment {
 
 
 
-        myAssignedListAdapter= new MyAssignedListAdapter(mActivity,surveyList);
+        myAssignedListAdapter= new MyAssignedListAdapter(mActivity,dashboardSurveyList);
         recyclerView.setAdapter(myAssignedListAdapter);
         myAssignedListAdapter.notifyDataSetChanged();
 
-        if(surveyList.size()>0){
+        if(dashboardSurveyList.size()>0){
             recyclerView.setVisibility(View.VISIBLE);
             NoDataLayout.setVisibility(View.GONE);
         }else{
@@ -307,25 +447,26 @@ public class DashboardFragment extends Fragment {
             NoDataLayout.setVisibility(View.VISIBLE);
         }
 
-        getShareableData();
-
-        if(SharedPreferencesRepository.getDataManagerInstance().IsDashboardDemoRequired()){
+      // getShareableData();
+        DemoLayout.setVisibility(View.GONE);
+      /*  if(SharedPreferencesRepository.getDataManagerInstance().IsDashboardDemoRequired()){
             DemoLayout.setVisibility(View.VISIBLE);
             showDemo();
         }else{
             DemoLayout.setVisibility(View.GONE);
-        }
+        }*/
 
 
 
     }
     class AssignedListHolder extends RecyclerView.ViewHolder{
 
-        CardView mainView;
+        CardView shareView,startView;
         TextView SurveyPointText,SurveyNameText;
         public AssignedListHolder(View view){
             super(view);
-            mainView=view.findViewById(R.id.cv_fragment_home_listitem);
+            shareView=view.findViewById(R.id.cv_Share);
+            startView=view.findViewById(R.id.cv_Start);
             SurveyPointText=view.findViewById(R.id.tv_fragmentHomeListItem_Points);
             SurveyNameText=view.findViewById(R.id.tv_fragmentHomeListItem_SurveyName);
         }
@@ -333,9 +474,9 @@ public class DashboardFragment extends Fragment {
     }
     class MyAssignedListAdapter extends RecyclerView.Adapter<AssignedListHolder>{
 
-        List<Survey_Listitem_Object>itemList;
+        List<Dashboard_Survey_ListItem_Object>itemList;
         Context mContext;
-        public MyAssignedListAdapter(Context c, List<Survey_Listitem_Object> list){
+        public MyAssignedListAdapter(Context c, List<Dashboard_Survey_ListItem_Object> list){
             this.itemList=list;
             this.mContext=c;
         }
@@ -353,15 +494,37 @@ public class DashboardFragment extends Fragment {
             String surveyId=itemList.get(position).getId();
             String surveyName=itemList.get(position).getSurveyName();
             String surveyPoints=itemList.get(position).getPoints();
+            String referalPoint=itemList.get(position).getReferPointsStr();
+            int isShareable = itemList.get(position).getIsShareable();
+            int isAttemptable =  itemList.get(position).getIsAttemptable();
+
+
             List<SurveyQuestions_ListItem> QuestionList= itemList.get(position).getQuestionsList();;
 
 
+            if(TextUtils.isEmpty(surveyPoints)){
+                holder.SurveyPointText.setText("0");
+            }else{
+                holder.SurveyPointText.setText(surveyPoints);
+            }
             Log.e("survey Points",surveyPoints);
             holder.SurveyNameText.setText(surveyName);
-            holder.SurveyPointText.setText(surveyPoints);
+
+            if(isShareable==1){
+                holder.shareView.setVisibility(View.VISIBLE);
+            }else{
+                holder.shareView.setVisibility(View.GONE);
+            }
+            if(isAttemptable==1){
+                holder.startView.setVisibility(View.VISIBLE);
+            }else{
+                holder.startView.setVisibility(View.GONE);
+            }
 
 
-            holder.mainView.setOnClickListener(v->{
+
+
+            holder.startView.setOnClickListener(v->{
                 Intent intent=new Intent(mActivity, SurveyStart_Activity.class);
                 intent.putExtra("survey_id",surveyId);
                 intent.putExtra("survey_name",surveyName);
@@ -371,6 +534,10 @@ public class DashboardFragment extends Fragment {
                 //startActivity(intent);
 
 
+            });
+
+            holder.shareView.setOnClickListener(v->{
+                generateReferalCode(surveyId,referalPoint,surveyPoints);
             });
 
 
@@ -412,29 +579,53 @@ public class DashboardFragment extends Fragment {
                                    ProfileSurveyList.add(new ProfileSurveyListItem(id, taskName, pr));
                                }
                            }
-
                            tvPointEarned.setText(PointEarned);
-                           tvPointRedeem.setText(PointReedem);
-                           tvPointAvailable.setText(PointAvailable);
                            tvCompletedSurvey.setText(CompletedSurvey);
+                           Log.e("Points Available",PointAvailable);
+                           Log.e("points Earned", PointReedem);
+                           if(TextUtils.isEmpty(PointAvailable)||PointAvailable=="0"){
+                               tvPointAvailable.setText("0");
+                               tvPointsWorth.setText("₹0");
+                           }else{
+                               tvPointAvailable.setText(PointAvailable);
+                               double pointsAvailable = Integer.parseInt(PointAvailable);
+                               double pointworth=pointsAvailable/250;
+                               double po=(double)Math.round(pointworth*100);
 
+
+                               tvPointsWorth.setText("₹ "+po);
+                            }
+                           if(TextUtils.isEmpty(PointReedem) || PointReedem == "0"){
+                               tvPointRedeem.setText("0");
+                               tvReedemPointsWorth.setText("₹0");
+                           }else{
+                               tvPointRedeem.setText(PointReedem);
+                               double pointsAvailable = Integer.parseInt(PointReedem);
+                               double pointworth=pointsAvailable/250;
+                               double po= (double)Math.round(pointworth*100);
+
+                               tvReedemPointsWorth.setText("₹ "+pointworth);
+                           }
                            progressBar.setProgress(ProfilePercentage);
                            tvPercentage.setText(ProfilePercentage + "%");
 
-                           if (ProfilePercentage == 100) {
-                               tvComplete.setText("Thank you !! Your Profile Completed");
-                               tvClickHere.setVisibility(View.GONE);
-                           } else {
-                               tvComplete.setText("Please complete your profile & Earn points");
-                               tvClickHere.setVisibility(View.VISIBLE);
-                           }
+
+
+
 
 
                        } else {
                            Utility.showAlertDialog(mActivity, "Error!!", "Something went wrong!!");
                        }
                        Utility.hideDialog(mActivity);
-                       getDashboardData();
+
+                       SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy, EEE, hh:mm a", Locale.getDefault());
+                       String currentDateandTime = sdf.format(new Date());
+
+
+                       tvLastUpdatedOn.setText(currentDateandTime);
+                      // getDashboardData();
+                       getDashboardSurvey();
                    }catch(Exception e){
                     e.printStackTrace();
                     Toast.makeText(mActivity, "Something went wrong!! Please Try Again.", Toast.LENGTH_SHORT).show();
@@ -446,7 +637,8 @@ public class DashboardFragment extends Fragment {
                 public void onFailure(Call<DashboardProfileResponse> call, Throwable t) {
                     Toast.makeText(mActivity, "Something went wrong!! Please Try Again.", Toast.LENGTH_SHORT).show();
                     Utility.hideDialog(mActivity);
-                    getDashboardData();
+                    //getDashboardData();
+                    getDashboardSurvey();
                 }
             });
 
@@ -548,6 +740,63 @@ public class DashboardFragment extends Fragment {
     }
 
     /**************************************Refer Friend Functionality***********************************************/
+
+    private void referNewDialog(){
+        Dialog referDialog= new Dialog(mActivity);
+        referDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        referDialog.setContentView(R.layout.dialog_refernearn);
+        String ReferalString=mActivity.getResources().getString(R.string.Referal_Text)+ReferCode+""+mActivity.getResources().getString(R.string.Referal_text_2);
+        String Applink="https://doyoursurvey.com/#/register";
+        Log.e("ReferalString",ReferalString);
+
+        LottieAnimationView animView= referDialog.findViewById(R.id.animLottie);
+        animView.playAnimation();
+
+        CardView whatsAppCard=referDialog.findViewById(R.id.cv_referNearn_whatsapp);
+        ImageView facebookImage=referDialog.findViewById(R.id.iv_referNearn_facebook);
+        ImageView twitterImage=referDialog.findViewById(R.id.iv_referNearn_twitter);
+        ImageView linkdinImage=referDialog.findViewById(R.id.iv_referNearn_linkedin);
+        ImageView mailImage=referDialog.findViewById(R.id.iv_referNearn_mail);
+        ImageView ivCloseDialog=referDialog.findViewById(R.id.ivCloseReferDialog);
+
+        ivCloseDialog.setOnClickListener(v->{
+            referDialog.dismiss();
+        });
+
+        whatsAppCard.setOnClickListener(v->{
+            Utility.shareWhatsapp(mActivity,ReferalString,"");
+            referDialog.dismiss();
+        });
+        facebookImage.setOnClickListener(v->{
+
+            Utility.shareFacebook(mActivity,ReferalString,Applink);
+            referDialog.dismiss();
+        });
+        twitterImage.setOnClickListener(v->{
+            Utility.shareTwitter(mActivity,ReferalString,ReferalString,"","");
+            referDialog.dismiss();
+        });
+        linkdinImage.setOnClickListener(v->{
+            Utility.shareLinkedin(mActivity,ReferalString);
+            referDialog.dismiss();
+        });
+        mailImage.setOnClickListener(v->{
+            Utility.shareOnMail(mActivity,"Do Survey and Earn Points",ReferalString);
+            referDialog.dismiss();
+        });
+
+
+        referDialog.show();
+        ColorDrawable drawable = new ColorDrawable(Color.TRANSPARENT);
+        referDialog.getWindow().setBackgroundDrawable(drawable);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(referDialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.gravity = Gravity.BOTTOM;
+        lp.windowAnimations = R.style.DialogAnimation;
+        referDialog.getWindow().setAttributes(lp);
+    }
     private void ReferAFriendDialog(){
         Dialog referDialog= new Dialog(mActivity);
         referDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -714,17 +963,19 @@ public class DashboardFragment extends Fragment {
         }
     }
     private void setSharableData(){
-        shareableListAdapter= new ShareableListAdapter(mActivity,shareAble_SurveyList);
+        /*shareableListAdapter= new ShareableListAdapter(mActivity,shareAble_SurveyList);
         shareableSurveyRecyclerView.setAdapter(shareableListAdapter);
-        shareableListAdapter.notifyDataSetChanged();
-        if(shareAble_SurveyList.size()>0){
+        shareableListAdapter.notifyDataSetChanged();*/
+
+       /* if(shareAble_SurveyList.size()>0){
             ShareableLayout.setVisibility(View.VISIBLE);
         }else{
             ShareableLayout.setVisibility(View.GONE);
-        }
+        }*/
+        ShareableLayout.setVisibility(View.GONE);
 
     }
-    class shareableListHolder extends RecyclerView.ViewHolder{
+    /*class shareableListHolder extends RecyclerView.ViewHolder{
 
         CardView mainView;
         TextView SurveyPointText,SurveyNameText,ShareText;
@@ -780,7 +1031,7 @@ public class DashboardFragment extends Fragment {
             return itemList.size();
         }
 
-    }
+    }*/
     private void generateReferalCode(String surveyId,String referPoint,String surveyPoint){
         if(Utility.isNetworkAvailable(mActivity)){
             Utility.showDialog(mActivity);
@@ -849,7 +1100,8 @@ public class DashboardFragment extends Fragment {
                             }
 
                             Utility.hideDialog(mActivity);
-                            ReferSurveyAFriendDialog(surveyId,ReferalCode,referPoint,surveyPoint);
+                           // ReferSurveyAFriendDialog(surveyId,ReferalCode,referPoint,surveyPoint);
+                            Utility.ReferSurveyAFriendDialog(mActivity,surveyId,ReferalCode,referPoint,surveyPoint);
                         }
 
                     }catch (Exception e){

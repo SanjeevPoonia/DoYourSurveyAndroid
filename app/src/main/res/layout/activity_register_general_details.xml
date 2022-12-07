@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="05pt">
+    android:padding="05pt"
+    android:background="@color/light_back">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,8 +21,8 @@
                 android:gravity="center"
                 android:padding="05pt">
                 <ImageView
-                    android:layout_width="50pt"
-                    android:layout_height="25pt"
+                    android:layout_width="100pt"
+                    android:layout_height="50pt"
                     android:src="@drawable/logo"/>
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -62,174 +63,104 @@
                                 android:padding="02pt"
                                 android:id="@+id/tvGeneralDetailEmail"
                                 android:text="Email"/>
-                            <View
-                                android:layout_width="01pt"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="01pt"
-                                android:layout_marginRight="05pt"
-                                android:background="@color/view_color"/>
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                app:tint="@color/pro_color"
                                 android:src="@drawable/ic_baseline_mail_outline_24"/>
 
                         </LinearLayout>
-                        <LinearLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="05pt"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10pt"
                             >
-                            <EditText
+
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
-                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/edittext_background_styles"
-                                android:inputType="textPassword"
-                                android:imeOptions="actionDone"
-                                android:id="@+id/et_registergeneral_password"
-                                android:textColor="@color/black"
                                 android:hint="Create Password"
+                                android:drawableEnd="@drawable/ic_baseline_lock_open_24"
+                                android:inputType="textPassword"
+                                android:imeOptions="actionNext"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
-                                />
-                            <View
-                                android:layout_width="01pt"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="01pt"
-                                android:layout_marginRight="05pt"
-                                android:background="@color/view_color"/>
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_baseline_lock_open_24"/>
-
-                        </LinearLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="01pt"
-                            android:layout_marginTop="02pt"
-                            android:layout_marginBottom="02pt"
-                            android:background="@color/view_color"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="05pt"
-                            >
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/edittext_background_styles"
-                                android:inputType="phone"
-                                android:imeOptions="actionDone"
-                                android:id="@+id/et_registergeneral_Phone"
                                 android:textColor="@color/black"
+                                android:textColorHint="@color/disable_btn"
+                                android:id="@+id/et_registergeneral_password"
+                                android:drawableTint="@color/pro_color"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5pt"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:hint="Enter Phone"
+                                android:drawableEnd="@drawable/ic_baseline_call_24"
+                                android:inputType="phone"
+                                android:imeOptions="actionNext"
+                                android:id="@+id/et_registergeneral_Phone"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
-                                />
-                            <View
-                                android:layout_width="01pt"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="01pt"
-                                android:layout_marginRight="05pt"
-                                android:background="@color/view_color"/>
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_baseline_call_24"/>
-
-                        </LinearLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="01pt"
-                            android:layout_marginTop="02pt"
-                            android:layout_marginBottom="02pt"
-                            android:background="@color/view_color"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="05pt"
-                            >
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/edittext_background_styles"
-                                android:inputType="textPersonName"
-                                android:imeOptions="actionDone"
-                                android:id="@+id/et_registergeneral_firstname"
                                 android:textColor="@color/black"
-                                android:hint="First Name"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColorHint="@color/disable_btn"
+                                android:drawableTint="@color/pro_color"
                                 />
-                            <View
-                                android:layout_width="01pt"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="01pt"
-                                android:layout_marginRight="05pt"
-                                android:background="@color/view_color"/>
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_baseline_person_24"/>
 
-                        </LinearLayout>
-                        <View
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="01pt"
-                            android:layout_marginTop="02pt"
-                            android:layout_marginBottom="02pt"
-                            android:background="@color/view_color"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="05pt"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5pt"
                             >
-                            <EditText
+
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
-                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/edittext_background_styles"
-                                android:inputType="textPersonName"
+                                android:hint="First Name"
+                                android:drawableEnd="@drawable/ic_baseline_person_24"
+                                android:inputType="textPersonName|textCapWords"
+                                android:imeOptions="actionNext"
+                                android:id="@+id/et_registergeneral_firstname"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/disable_btn"
+                                android:drawableTint="@color/pro_color"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5pt"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Last Name"
+                                android:drawableEnd="@drawable/ic_baseline_person_24"
+                                android:inputType="textPersonName|textCapWords"
                                 android:imeOptions="actionDone"
                                 android:id="@+id/et_registergeneral_lastName"
-                                android:textColor="@color/black"
-                                android:hint="Last Name"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/disable_btn"
+                                android:drawableTint="@color/pro_color"
                                 />
-                            <View
-                                android:layout_width="01pt"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="01pt"
-                                android:layout_marginRight="05pt"
-                                android:background="@color/view_color"/>
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_baseline_person_24"/>
 
-                        </LinearLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="01pt"
-                            android:layout_marginTop="02pt"
-                            android:layout_marginBottom="02pt"
-                            android:background="@color/view_color"/>
-
+                        </com.google.android.material.textfield.TextInputLayout>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="02pt"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Gender"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/colorPrimaryDark"/>
                         <RadioGroup
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -255,198 +186,144 @@
                                 android:layout_weight="1"
                                 android:id="@+id/rbGenderTransgender"/>
                         </RadioGroup>
-
-                        <View
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="01pt"
-                            android:layout_marginTop="02pt"
-                            android:layout_marginBottom="02pt"
-                            android:background="@color/view_color"/>
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5pt"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Date Of Birth"
+                                android:drawableEnd="@drawable/ic_baseline_perm_contact_calendar_24"
+                                android:inputType="date"
+                                android:imeOptions="actionNext"
+                                android:id="@+id/tv_registergeneral_dob"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/disable_btn"
+                                android:drawableTint="@color/pro_color"
+                                android:focusable="false"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5pt"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Enter City"
+                                android:drawableEnd="@drawable/ic_baseline_location_city_24"
+                                android:inputType="text|textCapSentences"
+                                android:imeOptions="actionNext"
+                                android:id="@+id/et_registergeneral_City"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/disable_btn"
+                                android:drawableTint="@color/pro_color"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5pt"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Enter Bio"
+                                android:drawableEnd="@drawable/ic_baseline_person_24"
+                                android:inputType="text|textCapSentences|textMultiLine"
+                                android:lines="3"
+                                android:imeOptions="actionNext"
+                                android:id="@+id/et_registergeneral_Bio"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/disable_btn"
+                                android:drawableTint="@color/pro_color"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5pt"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Redeem Coupon"
+                                android:drawableEnd="@drawable/ic_baseline_person_add_alt_1_24"
+                                android:inputType="text|textCapSentences"
+                                android:imeOptions="actionDone"
+                                android:id="@+id/et_registergeneral_RedeemCoupon"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/disable_btn"
+                                android:drawableTint="@color/pro_color"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="05pt"
+                            app:cardCornerRadius="7dp"
+                            app:cardElevation="10dp"
+                            android:elevation="8dp"
+                            app:cardBackgroundColor="@color/pro_color"
+                            android:dividerHeight="0.0px"
+                            android:clipToPadding="false"
+                            android:clipChildren="false"
+                            app:cardPreventCornerOverlap="false"
+                            android:id="@+id/cv_RegisterGeneral_Submit"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="20pt"
+                                android:paddingTop="05pt"
+                                android:paddingEnd="20pt"
+                                android:paddingBottom="05pt"
+                                android:text="Submit"
+                                android:textAllCaps="false"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:gravity="center"/>
+                        </androidx.cardview.widget.CardView>
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="02pt"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Date Of Birth"
-                            android:textColor="@color/black"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
                             android:layout_marginTop="05pt"
-                            >
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/edittext_background_styles"
-                                android:id="@+id/tv_registergeneral_dob"
-                                android:textColor="@color/black"
-                                android:hint="dd-mm-yyyy"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                />
-                            <View
-                                android:layout_width="01pt"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="01pt"
-                                android:layout_marginRight="05pt"
-                                android:background="@color/view_color"/>
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_baseline_perm_contact_calendar_24"/>
-
-                        </LinearLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="01pt"
-                            android:layout_marginTop="02pt"
-                            android:layout_marginBottom="02pt"
-                            android:background="@color/view_color"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="05pt"
-                            >
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/edittext_background_styles"
-                                android:inputType="text|textCapSentences"
-                                android:imeOptions="actionDone"
-                                android:id="@+id/et_registergeneral_City"
-                                android:textColor="@color/black"
-                                android:hint="Enter City"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                />
-                            <View
-                                android:layout_width="01pt"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="01pt"
-                                android:layout_marginRight="05pt"
-                                android:background="@color/view_color"/>
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_baseline_location_city_24"/>
-
-                        </LinearLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="01pt"
-                            android:layout_marginTop="02pt"
-                            android:layout_marginBottom="02pt"
-                            android:background="@color/view_color"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="05pt"
-                            >
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/edittext_background_styles"
-                                android:inputType="text|textCapSentences"
-                                android:imeOptions="actionDone"
-                                android:id="@+id/et_registergeneral_RedeemCoupon"
-                                android:textColor="@color/black"
-                                android:hint="Redeem Coupon"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                />
-                            <View
-                                android:layout_width="01pt"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="01pt"
-                                android:layout_marginRight="05pt"
-                                android:background="@color/view_color"/>
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_baseline_person_add_alt_1_24"/>
-                        </LinearLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="01pt"
-                            android:layout_marginTop="02pt"
-                            android:layout_marginBottom="02pt"
-                            android:background="@color/view_color"/>
-
-
+                            android:text="@string/login"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_registergeneral_Login"
+                            android:textSize="12sp"
+                            />
                     </LinearLayout>
 
 
                 </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="05pt"
-                    app:cardCornerRadius="25dp"
-                    app:cardElevation="10dp"
-                    android:elevation="8dp"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    android:dividerHeight="0.0px"
-                    android:clipToPadding="false"
-                    android:clipChildren="false"
-                    app:cardPreventCornerOverlap="false"
-                    android:id="@+id/cv_RegisterGeneral_Submit"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="20pt"
-                        android:paddingTop="05pt"
-                        android:paddingEnd="20pt"
-                        android:paddingBottom="05pt"
-                        android:text="Submit"
-                        android:textAllCaps="false"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-                </androidx.cardview.widget.CardView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="02pt"
-                    android:layout_marginTop="05pt"
-                    android:text="@string/login"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:id="@+id/tv_registergeneral_Login"
-                    android:textSize="12sp"
-                    />
-
-
-
-
-
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="bottom">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_margin="10pt"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/black"
-                    android:text="@string/PoweredBy"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:id="@+id/tv_registergeneral_poweredby"
-                    />
-            </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

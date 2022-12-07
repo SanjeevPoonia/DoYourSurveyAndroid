@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
 import com.qdegrees.activity.Authenticator_Activity;
+import com.qdegrees.activity.HomeAct;
 import com.qdegrees.activity.MainHomeActivity;
 import com.qdegrees.doyoursurvey.R;
 import com.qdegrees.local_storage.SharedPreferencesRepository;
@@ -48,8 +49,10 @@ public class SignoutFragment extends Fragment {
         NoText=root.findViewById(R.id.tvFragmentSignOut_No);
         NoText.setText("CANCEL");
         NoText.setOnClickListener(v->{
-          Intent intent= new Intent(mActivity,MainHomeActivity.class);
+          Intent intent= new Intent(mActivity, HomeAct.class);
           startActivity(intent);
+          /*Intent intent= new Intent(mActivity,MainHomeActivity.class);
+          startActivity(intent);*/
           mActivity.finish();
         });
 

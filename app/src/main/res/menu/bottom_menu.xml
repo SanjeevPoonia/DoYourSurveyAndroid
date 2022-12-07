@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:title="@string/menu_dashboard_btm"
+        android:icon="@drawable/ic_dashboard_btm"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_profile"
+        android:enabled="true"
+        android:title="@string/menu_panel_profile_btm"
+        android:icon="@drawable/ic_profile_btm"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_jugaad"
+        android:enabled="true"
+        android:title=""
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_rewards"
+        android:enabled="true"
+        android:icon="@drawable/ic_rewards_btm"
+        android:title="@string/menu_rewards_btm"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/action_refer"
+        android:enabled="true"
+        android:icon="@drawable/ic_refer_btm"
+        android:title="@string/menu_refer_btm"
+        app:showAsAction="ifRoom"
+        />
+</menu>

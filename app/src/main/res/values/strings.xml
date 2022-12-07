@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">DoYourSurvey</string>
-    <string name="VersionName">1.0.18</string>
+    <string name="VersionName">1.1.2</string>
     <string name="facebook_app_id">2508091959485474</string>
     <string name="fb_login_protocol_scheme">fb2508091959485474</string>
 
@@ -8,7 +8,7 @@
 
     <string name="PoweredBy"><![CDATA[Powered By <a href="https://www.qdegrees.com/"><u><b><font fgcolor=\'#D81B60\'>QDegrees Services</font></b></u></a>]]></string>
     <string name="login_createAccount"><![CDATA[Forgot Password? <u><b><font color=\'#3053F4\'>Click Here</font></b></u>]]></string>
-    <string name="login_signup"><![CDATA[Click here to <u><b><font color=\'#3053F4\'>Signup</font></b></u>]]></string>
+    <string name="login_signup"><![CDATA[Don\&#39;t have an account? <u><b><font color=\'#3053F4\'>Register now</font></b></u>]]></string>
     <string name="login"><![CDATA[Click here to <u><b><font color=\'#3053F4\'>Login</font></b></u>]]></string>
     <string name="ok">ok</string>
     <string name="yes">Yes</string>
@@ -65,5 +65,111 @@
     <string name="Refer_Survey_Description">Refer a survey &amp; earn points while register and take survey</string>
     <string name="Refer_Survey_ShareWith">Share With:</string>
 
+
+    <!--  New Design Text -->
+
+    <string name="Welcome_Text">Welcome</string>
+    <string name="Splash_Welcome_Sub_Text">Welcome Sub Text</string>
+    <string name="Choose_Your_Category">Choose your category</string>
+    
+    <string name="ParticipateToEarn">Reward Your Opinion </string>
+    <string name="GetCustomerInsight">Get Customer insight</string>
+    <string name="new_Login">Login</string>
+    <string name="new_Signup">Sign Up</string>
+    <string name="GetInTouch">Get In Touch</string>
+    
+    <string name="hint_EmailId">Email Id</string>
+    <string name="hint_CompanyName">Company Name</string>
+    <string name="hint_Industry">Industry</string>
+    <string name="hint_Message">Message</string>
+    <string name="submit">Submit</string>
+    <string name="Hello">Hello</string>
+    <string name="hint_login_to_account">Please login to your account</string>
+
+    <string name="hint_email_address">Email Address</string>
+    <string name="hint_password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="user_login">Login</string>
+    <string name="redeem">Redeem</string>
+
+    <string name="menu_dashboard_btm">Dashboard</string>
+    <string name="menu_panel_profile_btm">Panel Profile</string>
+    <string name="menu_rewards_btm">Rewards</string>
+    <string name="Rewards_History">Rewards History</string>
+    <string name="menu_refer_btm">Refer and Earns</string>
+    <string name="Complete_Profile">Complete Profile</string>
+
+    <string name="Quick_Stats">Quick Stats</string>
+    <string name="last_update">Last Updated On</string>
+    <string name="update_date">Oct 31, 2022, Mon, 15:45</string>
+    <string name="update_every">Updates every 60 mins automatically</string>
+    
+    <string name="dash_total_points">Total Points Available</string>
+    <string name="dash_total_points_Earned">Total Points Earned</string>
+    <string name="dash_completed_survey">Completed Survey</string>
+    <string name="dash_last_month">Last Month Points Earned</string>
+    <string name="dash_points_redeem">Points Redeemed</string>
+    <string name="Point_Worth">Points Worth</string>
+    <string name="Rupees">₹0</string>
+    <string name="Rupees_1">₹0</string>
+
+    <string name="Available_Survey">Available Survey</string>
+    <string name="View_All">View All</string>
+    <string name="Earn_Point">Earn Point</string>
+
+    <string name="Start">Start</string>
+    <string name="total_earn_points">Total Earn Points</string>
+    <string name="refer_points">5000</string>
+
+    <string name="bio">Bio</string>
+    <string name="bio_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley.</string>
+
+    <string name="Login_Details">Login Details</string>
+    <string name="password_star">****************</string>
+
+    <string name="Edit_Profile">Edit Profile</string>
+    <string name="Example">Example</string>
+    <string name="refer_content">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</string>
+
+    <string name="refer_bed_content">Don\'t stay in bed, unless you can make money in bed</string>
+    <string name="refer_earn_content">Earn with network markating</string>
+    <string name="start_now">Start Now</string>
+
+    <string name="refer_doyoursurvey">Refer DoYourSurvey to your friend !</string>
+    <string name="refer_dYI_Earn">Refer &amp; earn points when they register and take survey</string>
+    <string name="earn_100">Earn 100 Points as they Login</string>
+
+    <string name="shareWith">Share With</string>
+    <string name="Edit_Activity">Edit Profile</string>
+
+
+    <string name="profile_name">Name</string>
+    <string name="profile_Fname">First Name</string>
+    <string name="profile_Lname">Last Name</string>
+    <string name="profile_Gender">Gender</string>
+    <string name="profile_City">City</string>
+    <string name="profile_Mobile">Mobile</string>
+    <string name="profile_dob">Date of Birth</string>
+    <string name="profile_bio">Bio</string>
+    <string name="profile_update">Update</string>
+
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+
+    <string name="reedem_minimum">Minimum 1000 reward points redeem at a time </string>
+    <string name="enter_points">Enter Points to Redeem</string>
+    <string name="enter_paytm_number">Enter Paytm Number</string>
+    <string name="Redeem_Points">Redeem Point</string>
+    <string name="Redeem_reward_points">Redeem Reward Points</string>
+    <string name="powered_by">Powered By</string>
+    <string name="qdegrees">QDegrees</string>
+
+    <string name="refer_a_survey">Refer a survey to your friend !</string>
+    <string name="refer_survey_point">You get 25 Points, Friend gets 50 Points</string>
+
+    <string name="hint_register">Register Now! it\'s Free!</string>
+    <string name="or_signup">or Sign Up with</string>
+
+    <string name="Uploading_profile">Uploading Profile Image</string>
 
 </resources>

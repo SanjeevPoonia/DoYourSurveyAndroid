@@ -35,6 +35,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.qdegrees.activity.Authenticator_Activity;
 import com.qdegrees.doyoursurvey.R;
 import com.qdegrees.network.ApiService;
@@ -56,9 +57,9 @@ import retrofit2.Response;
 
 public class Register_Activity extends AppCompatActivity {
     Activity mActivity;
-    TextView tvSignupPoweredby,tvSignupLogin;
+    TextView tvSignupLogin;
     String EmailStr="";
-    EditText edMail,edOTP;
+    TextInputEditText edMail,edOTP;
     CardView cv_verify,cv_signupfacebook,cv_signupgoogle;
     String OTPServerStr="",OTPStr="";
     LinearLayout otpLayout;
@@ -94,7 +95,6 @@ public class Register_Activity extends AppCompatActivity {
 
     }
     private void findIds(){
-        tvSignupPoweredby=findViewById(R.id.tv_signup_poweredby);
 
         tvSignupLogin=findViewById(R.id.tv_Signup_Login);
         edMail=findViewById(R.id.et_signup_email);
@@ -106,8 +106,7 @@ public class Register_Activity extends AppCompatActivity {
 
 
 
-        tvSignupPoweredby.setText(Html.fromHtml(mActivity.getResources().getString(R.string.PoweredBy)));
-        tvSignupPoweredby.setMovementMethod(LinkMovementMethod.getInstance());
+
         tvSignupLogin.setText(Html.fromHtml(mActivity.getResources().getString(R.string.login)));
 
 

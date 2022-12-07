@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.qdegrees.doyoursurvey.DoYourSurvey;
 import com.qdegrees.utils.Constants;
+import com.qdegrees.utils.ProgressRequestBody;
 
 import java.io.IOException;
 import java.security.KeyManagementException;
@@ -17,6 +18,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Protocol;
 import okhttp3.Request;
@@ -121,5 +123,9 @@ public class RetrofitAPIClient {
             return null;
         }
 
+    }
+
+    public static MultipartBody.Part getImageFilePartProgress(ProgressRequestBody fileBody){
+        return MultipartBody.Part.createFormData("image",("dys" + System.currentTimeMillis()+".jpg"),fileBody);
     }
 }

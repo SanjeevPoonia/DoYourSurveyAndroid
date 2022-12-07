@@ -46,8 +46,14 @@ public class RegisterUserRequest {
     @SerializedName("password")
     @Expose
     private String password;
+    @SerializedName("userType")
+    @Expose
+    private String userType;
+    @SerializedName("bio")
+    @Expose
+    private String bio;
 
-    public RegisterUserRequest(String email, String mobile, String firstName, String lastName, String fullName, String gender, String dob, String city, String remember, String refferal, String profileImage, String googleId, String facebookUserID, String password) {
+    public RegisterUserRequest(String email, String mobile, String firstName, String lastName, String fullName, String gender, String dob, String city, String remember, String refferal, String profileImage, String googleId, String facebookUserID, String password,String userty,String b) {
         this.email = email;
         this.mobile = mobile;
         this.firstName = firstName;
@@ -62,5 +68,7 @@ public class RegisterUserRequest {
         this.googleId = googleId;
         this.facebookUserID = facebookUserID;
         this.password = password;
+        this.userType = userty;
+        this.bio = b;
     }
 }

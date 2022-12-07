@@ -49,5 +49,7 @@ public class LoginResponse {
         public  String date;
         @SerializedName("__v")
         public  String v;
+        @SerializedName("bio")
+        public  String bio;
     }
 }

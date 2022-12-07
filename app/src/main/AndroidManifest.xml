@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.qdegrees.doyoursurvey">
 
     <application
@@ -11,7 +12,8 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DoYourSurvey">
+        android:theme="@style/Theme.DoYourSurvey"
+        >
         <activity
             android:name="com.qdegrees.activity.MainHomeActivity"
             android:label="@string/title_activity_main_home"
@@ -19,7 +21,8 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.qdegrees.activity.Splash_Screen_Activity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,12 +41,28 @@
         <activity android:name="com.qdegrees.activity.ui.survey.ProfileSurvey_AttemptActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name="com.qdegrees.activity.ChooseYourCategory_Act"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="com.qdegrees.activity.GetInTouch_Act"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="com.qdegrees.activity.HomeAct"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.qdegrees.activity.ui.panelprofile.EditProfileAct"
+            android:screenOrientation="portrait"
+            />
+
+
+
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
 
-        <activity android:name="com.facebook.FacebookActivity"
+        <activity
+            android:name="com.facebook.FacebookActivity"
             android:configChanges=
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:exported="true"
             android:label="@string/app_name" />
         <activity
             android:name="com.facebook.CustomTabActivity"
@@ -55,11 +74,26 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
+        <!-- Provide External Space-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.qdegrees.doyoursurvey.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
 
     </application>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+
 
 </manifest>

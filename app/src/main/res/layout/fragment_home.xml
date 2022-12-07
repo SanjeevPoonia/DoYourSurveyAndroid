@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.qdegrees.activity.ui.dashboard.DashboardFragment"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/get_touch_back"
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,273 +17,157 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvHome"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-                    <ImageView
-                        android:id="@+id/wave_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_wavesmall"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                    android:layout_height="130dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp">
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/ivUserImage"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="2dp"
+                            android:src="@drawable/user_dummy"
+                            />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp">
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:textColor="@color/pro_color"
+                                android:id="@+id/tvFragDashName"
+                                android:text="Dummy Name"
+                                android:singleLine="true"
+                                android:textAppearance="?android:attr/textAppearanceLarge"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_dash_location"
+                                    android:layout_margin="02dp"/>
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorPrimary"
+                                    android:text="Jaipur, Rajasthan"
+                                    android:singleLine="true"
+                                    android:id="@+id/actv_home_city"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                            </LinearLayout>
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="7dp"
+                                app:cardElevation="8dp"
+                                android:elevation="8dp"
+                                app:cardBackgroundColor="@color/pro_color"
+                                android:dividerHeight="0.0px"
+                                android:clipToPadding="false"
+                                android:clipChildren="false"
+                                app:cardPreventCornerOverlap="false"
+                                android:id="@+id/cv_dashboard_CompleteProfile"
+                                android:layout_marginTop="10dp"
+                                >
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textAllCaps="false"
+                                    android:text="@string/Complete_Profile"
+                                    android:gravity="center"
+                                    android:padding="03pt"
+                                    />
+                            </androidx.cardview.widget.CardView>
+
+
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="02pt"
+                            >
+                            <ProgressBar
+                                android:id="@+id/pbFragmentHome_Profile"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:indeterminate="false"
+                                android:progressDrawable="@drawable/circular_progress_bar"
+                                android:background="@drawable/circle_shape"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:max="100"
+                                android:progress="0"
+                                android:layout_margin="02pt"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="02pt"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:textColor="@color/pro_color"
+                                android:text="0%"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:id="@+id/tvFragmentHome_Percentage"
+                                android:layout_centerInParent="true"
+                                />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp"
+                    android:layout_marginTop="10pt"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/wave_image"
-                        android:padding="05pt">
+                        android:padding="05dp"
+                        android:gravity="center"
+                        >
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="05pt"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="05dp"
-                                android:elevation="4dp"
-                                app:cardBackgroundColor="@color/cardview_light_background"
-                                android:dividerHeight="0.0px"
-                                android:clipToPadding="false"
-                                android:clipChildren="false"
-                                app:cardPreventCornerOverlap="false"
-                                >
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center"
-                                    android:layout_gravity="center">
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_margin="01pt"
-                                        android:src="@drawable/ic_pointearned"
-                                        />
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:orientation="vertical"
-                                        android:gravity="center">
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textColor="@color/colorPrimaryDark"
-                                            android:textStyle="bold"
-                                            android:text="0"
-                                            android:padding="01pt"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/tvFragmentHomePointEarned"
-                                            />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textColor="@color/view_color"
-                                            android:textStyle="bold"
-                                            android:textSize="12sp"
-                                            android:text="Points Earned"
-                                            android:padding="01pt"
-                                            />
-                                    </LinearLayout>
-
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
+                                android:layout_weight="0.7"
+                                android:gravity="center_vertical"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/pro_color"
+                                android:text="@string/Quick_Stats"/>
+                            <ImageView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="05pt"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="05dp"
-                                android:elevation="4dp"
-                                app:cardBackgroundColor="@color/cardview_light_background"
-                                android:dividerHeight="0.0px"
-                                android:clipToPadding="false"
-                                android:clipChildren="false"
-                                app:cardPreventCornerOverlap="false"
-
-                                >
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center"
-                                    android:layout_gravity="center">
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_margin="01pt"
-                                        android:src="@drawable/ic_redeempoints"
-                                        />
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:orientation="vertical"
-                                        android:gravity="center">
-
-                                        <TextView
-                                            android:id="@+id/tvFragmentHomePointRedeemed"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:padding="01pt"
-                                            android:text="0"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:textColor="@color/colorPrimaryDark"
-                                            android:textStyle="bold" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textColor="@color/view_color"
-                                            android:textStyle="bold"
-                                            android:textSize="12sp"
-                                            android:text="Points Redeemed"
-                                            android:padding="01pt"
-                                            />
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="03pt">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="05pt"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="05dp"
-                                android:elevation="4dp"
-                                app:cardBackgroundColor="@color/cardview_light_background"
-                                android:dividerHeight="0.0px"
-                                android:clipToPadding="false"
-                                android:clipChildren="false"
-                                app:cardPreventCornerOverlap="false"
-                                >
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center"
-                                    android:layout_gravity="center">
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_margin="01pt"
-                                        android:src="@drawable/ic_pointsavailable"
-                                        />
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:orientation="vertical"
-                                        android:gravity="center">
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textColor="@color/colorPrimaryDark"
-                                            android:textStyle="bold"
-                                            android:text="0"
-                                            android:padding="01pt"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/tvFragmentHomePointAvailable"
-                                            />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textColor="@color/view_color"
-                                            android:textStyle="bold"
-                                            android:textSize="12sp"
-                                            android:text="Points Available"
-                                            android:padding="01pt"
-                                            />
-                                    </LinearLayout>
-
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="05pt"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="05dp"
-                                android:elevation="4dp"
-                                app:cardBackgroundColor="@color/cardview_light_background"
-                                android:dividerHeight="0.0px"
-                                android:clipToPadding="false"
-                                android:clipChildren="false"
-                                app:cardPreventCornerOverlap="false"
-
-                                >
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center"
-                                    android:layout_gravity="center">
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_margin="01pt"
-                                        android:src="@drawable/ic_completedsurvey"
-                                        />
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:orientation="vertical"
-                                        android:gravity="center">
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textColor="@color/colorPrimaryDark"
-                                            android:textStyle="bold"
-                                            android:text="0"
-                                            android:padding="01pt"
-                                            android:textAppearance="?android:attr/textAppearanceMedium"
-                                            android:id="@+id/tvFragmentHomeCompletedSurvey"
-                                            />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:textColor="@color/view_color"
-                                            android:textStyle="bold"
-                                            android:textSize="12sp"
-                                            android:text="Completed Survey"
-                                            android:padding="01pt"
-                                            />
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
+                                android:src="@drawable/ic_dash_refresh"
+                                android:layout_margin="5dp"
+                                android:id="@+id/ivReferechProfile"
+                                />
 
                         </LinearLayout>
                         <LinearLayout
@@ -291,87 +175,363 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="center_vertical">
-                            <RelativeLayout
+                            <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:padding="02pt"
-                                >
-                                <ProgressBar
-                                    android:id="@+id/pbFragmentHome_Profile"
-                                    android:layout_width="70dp"
-                                    android:layout_height="70dp"
-                                    android:indeterminate="false"
-                                    android:progressDrawable="@drawable/circular_progress_bar"
-                                    android:background="@drawable/circle_shape"
-                                    style="?android:attr/progressBarStyleHorizontal"
-                                    android:max="100"
-                                    android:progress="0"
-                                    android:layout_margin="02pt"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:padding="02pt"
-                                    android:gravity="center"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/colorAccent"
-                                    android:text="0%"
-                                    android:textAppearance="?android:attr/textAppearanceSmall"
-                                    android:id="@+id/tvFragmentHome_Percentage"
-                                    android:layout_centerInParent="true"
-                                    />
-                            </RelativeLayout>
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
+                                android:gravity="center_vertical"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/quick_text_color"
+                                android:textStyle="bold"
+                                android:text="@string/last_update"/>
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/quick_text_color"
+                                android:text="@string/update_date"
+                                android:layout_marginStart="10pt"
+                                android:id="@+id/tvLastUpdatedOn"
+                                />
+                        </LinearLayout>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                           android:layout_marginTop="05dp"
+                            android:gravity="center_vertical"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/quick_text_color"
+                            android:text="@string/update_every"
+                            />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/quick_text_color"
+                            android:layout_marginTop="2pt"
+                            android:layout_marginBottom="2pt"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:orientation="horizontal">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
                                 android:layout_weight="1"
-                                android:layout_margin="02pt"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="05dp"
-                                android:elevation="4dp"
-                                app:cardBackgroundColor="@color/cardview_light_background"
+                                android:layout_marginEnd="3pt"
+                                android:padding="02pt"
+                                android:background="@drawable/dash_stats_background">
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textStyle="bold"
+                                    android:text="@string/dash_total_points"
+                                    android:textColor="@color/dash_stats_title"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="02pt"
+                                    android:layout_marginBottom="02pt">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="@string/Point_Worth"
+                                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="@string/Rupees"
+                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                        android:layout_marginStart="3pt"
+                                        android:id="@+id/tv_Total_points_Worth"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_gravity="bottom"
+                                    >
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/pro_color"
+                                        android:id="@+id/tvFragmentHomePointAvailable"/>
+                                    <ImageView
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:src="@drawable/ic_dash_total_earned"
+                                        />
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_marginStart="3pt"
+                                android:background="@drawable/dash_stats_background"
+                                android:padding="02pt">
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textStyle="bold"
+                                    android:text="@string/dash_completed_survey"
+                                    android:textColor="@color/dash_stats_title"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="02pt"
+                                    android:layout_marginBottom="02pt">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+
+                                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+
+                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                        android:layout_marginStart="3pt"
+                                        />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_gravity="bottom"
+                                    >
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/pro_color"
+                                        android:id="@+id/tvFragmentHomeCompletedSurvey"/>
+                                    <ImageView
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:src="@drawable/ic_dash_completed_sur"
+                                        />
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6pt">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="3pt"
+                                android:background="@drawable/dash_stats_background"
+                                android:padding="02pt">
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textStyle="bold"
+                                    android:text="@string/dash_total_points_Earned"
+                                    android:textColor="@color/dash_stats_title"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="02pt"
+                                    android:layout_marginBottom="02pt">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+
+                                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+
+                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                        android:layout_marginStart="3pt"
+                                        />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_gravity="bottom"
+                                    >
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/pro_color"
+                                        android:id="@+id/tvFragmentHomePointEarned"/>
+                                    <ImageView
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:src="@drawable/ic_dash_last_earn"
+                                        />
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_marginStart="3pt"
+                                android:background="@drawable/dash_stats_background"
+                                android:padding="02pt">
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textStyle="bold"
+                                    android:text="@string/dash_points_redeem"
+                                    android:textColor="@color/dash_stats_title"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="02pt"
+                                    android:layout_marginBottom="02pt">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="@string/Point_Worth"
+                                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:text="@string/Rupees_1"
+                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                        android:layout_marginStart="3pt"
+                                        android:id="@+id/tv_reedem_points_worth"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_gravity="bottom"
+                                    >
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/pro_color"
+                                        android:id="@+id/tvFragmentHomePointRedeemed"/>
+                                    <ImageView
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:src="@drawable/ic_dash_point_redeemed"
+                                        />
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10pt"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="05dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.7"
+                                android:gravity="center_vertical"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/pro_color"
+                                android:text="@string/Available_Survey"/>
+                            <androidx.cardview.widget.CardView
+                                android:layout_weight="0.3"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                app:cardCornerRadius="7dp"
+                                app:cardElevation="8dp"
+                                android:elevation="8dp"
+                                app:cardBackgroundColor="@color/pro_color"
                                 android:dividerHeight="0.0px"
                                 android:clipToPadding="false"
                                 android:clipChildren="false"
                                 app:cardPreventCornerOverlap="false"
-                                android:id="@+id/cv_fragmentHome_Profile"
+                                android:id="@+id/cv_AvailableSurvey_ViewAll"
                                 >
-                                <LinearLayout
+
+                                <TextView
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    android:padding="02pt">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textColor="@color/black"
-                                        android:textAppearance="?android:attr/textAppearanceSmall"
-                                        android:id="@+id/tv_fragmentHome_ProfileTitle"
-                                        android:padding="01pt"
-                                        />
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="end"
-                                        android:textColor="@color/colorAccent"
-                                        android:text="Click Here"
-                                        android:textAppearance="?android:attr/textAppearanceSmall"
-                                        android:id="@+id/tv_fragmenthome_ClickHere"
-                                        />
-
-                                </LinearLayout>
+                                    android:layout_height="match_parent"
+                                    android:textColor="@color/white"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textAllCaps="false"
+                                    android:text="@string/View_All"
+                                    android:gravity="center"
+                                    android:paddingStart="10pt"
+                                    android:paddingEnd="10pt"
+                                    android:layout_gravity="center_vertical"
+                                    />
                             </androidx.cardview.widget.CardView>
+
                         </LinearLayout>
                     </LinearLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="05pt"
-                    android:gravity="center">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/dash_stats_title"
+                        android:layout_marginTop="03pt"
+                        android:layout_marginBottom="03pt"/>
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -430,6 +590,86 @@
                     </LinearLayout>
 
 
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10pt"
+                    android:background="@color/white">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/pro_color"
+                        android:text="@string/menu_refer_btm"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/dash_stats_title"
+                        android:layout_marginTop="03pt"
+                        android:layout_marginBottom="03pt"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cv_dashboard_referbtn"
+                        >
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_dash_refercard"
+                            android:scaleType="fitXY"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="05pt">
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textStyle="bold"
+                                android:text="@string/total_earn_points"
+                                android:textColor="@color/white"
+                                />
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:textStyle="bold"
+                                android:text="@string/refer_points"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="05pt"
+                                android:textSize="30sp"
+                                />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="05pt"
+                    android:gravity="center">
+
+
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -479,94 +719,8 @@
                             />
                     </LinearLayout>
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10pt"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="05dp"
-                        android:elevation="4dp"
-                        android:dividerHeight="0.0px"
-                        android:clipToPadding="false"
-                        android:clipChildren="false"
-                        app:cardPreventCornerOverlap="false"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/refer_card_background"
-                            android:orientation="horizontal"
-                            android:gravity="center">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical"
-                                android:gravity="center">
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:padding="05pt"
-                                    android:textColor="@color/ReferTitle"
-                                    android:text="REFER A FRIEND"
-                                    android:textAlignment="center"
-                                    android:textSize="16sp"/>
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:padding="02pt"
-                                    android:textColor="@color/white"
-                                    android:text="refer a friend and earn 100 Points"
-                                    android:textAlignment="center"
-                                    android:textStyle="bold"
-                                    android:textSize="18sp"
-                                    />
-                                <androidx.cardview.widget.CardView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    app:cardCornerRadius="15dp"
-                                    app:cardElevation="10dp"
-                                    android:elevation="8dp"
-                                    app:cardBackgroundColor="@color/colorAccent"
-                                    android:dividerHeight="0.0px"
-                                    android:clipToPadding="false"
-                                    android:clipChildren="false"
-                                    app:cardPreventCornerOverlap="false"
-                                    android:id="@+id/cv_dashboard_referbtn"
-                                    android:layout_marginTop="10pt"
-                                    android:layout_marginBottom="05pt"
-                                    >
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:textColor="@color/white"
-                                        android:textStyle="bold"
-                                        android:textAppearance="?android:attr/textAppearanceSmall"
-                                        android:textAllCaps="false"
-                                        android:text="Refer Now"
-                                        android:padding="05pt"
-                                        />
-                                </androidx.cardview.widget.CardView>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:gravity="center">
-                                <ImageView
-                                    android:layout_width="75pt"
-                                    android:layout_height="50pt"
-                                    android:src="@drawable/refer_gift"
-                                    />
-                            </LinearLayout>
 
 
-                        </LinearLayout>
-
-
-                    </androidx.cardview.widget.CardView>
 
 
 

@@ -20,7 +20,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.qdegrees.activity.Authenticator_Activity;
+import com.qdegrees.activity.HomeAct;
 import com.qdegrees.activity.MainHomeActivity;
 import com.qdegrees.doyoursurvey.R;
 import com.qdegrees.local_storage.SharedPreferencesRepository;
@@ -38,13 +40,13 @@ import retrofit2.Response;
 
 public class Register_General_Details extends AppCompatActivity {
     Activity mActivity;
-    TextView tvPoweredby;
+
     protected ApiService apiService;
     String EmailStr="",FB_Id="",Google_id="";
-    TextView tvEmail,tvDOB,tvLogin;
-    EditText etPassword,etFirstName,etLastName,etMobile,etCity,etReedemCoupon;
+    TextView tvEmail,tvLogin;
+    TextInputEditText etPassword,etFirstName,etLastName,etMobile,etCity,etReedemCoupon,tvDOB,etBio;
     RadioGroup rgGender;
-    String strPassword="",strFirstName="",strLastName="",strMobile="",strCity="",strCoupon="",strGender="",strDob="";
+    String strPassword="",strFirstName="",strLastName="",strMobile="",strCity="",strCoupon="",strGender="",strDob="",strBio="";
     CardView cvSubmit;
     String passwordError="Password must be at least 8 characters and must contain at least one lower case letter, one upper case letter and one digit";
 
@@ -61,9 +63,7 @@ public class Register_General_Details extends AppCompatActivity {
 
     }
     private void findIds(){
-        tvPoweredby=findViewById(R.id.tv_registergeneral_poweredby);
-        tvPoweredby.setText(Html.fromHtml(mActivity.getResources().getString(R.string.PoweredBy)));
-        tvPoweredby.setMovementMethod(LinkMovementMethod.getInstance());
+
 
         tvEmail=findViewById(R.id.tvGeneralDetailEmail);
         tvDOB=findViewById(R.id.tv_registergeneral_dob);
@@ -72,6 +72,7 @@ public class Register_General_Details extends AppCompatActivity {
         etLastName=findViewById(R.id.et_registergeneral_lastName);
         etMobile=findViewById(R.id.et_registergeneral_Phone);
         etCity=findViewById(R.id.et_registergeneral_City);
+        etBio = findViewById(R.id.et_registergeneral_Bio);
         etReedemCoupon=findViewById(R.id.et_registergeneral_RedeemCoupon);
         rgGender=findViewById(R.id.rgRegisterGeneralGender);
         cvSubmit=findViewById(R.id.cv_RegisterGeneral_Submit);
@@ -145,7 +146,7 @@ public class Register_General_Details extends AppCompatActivity {
                             MStr = String.valueOf(monthOfYear + 1);
                         }
 
-                        strDob = DayStr + "-" + MStr + "-" + year;
+                        strDob = year + "-" + MStr + "-" +DayStr ;
                         //*************Call Time Picker Here ********************
                         tvDOB.setText(strDob);
                     }
@@ -160,6 +161,8 @@ public class Register_General_Details extends AppCompatActivity {
         strMobile=etMobile.getText().toString();
         strCity=etCity.getText().toString();
         strCoupon=etReedemCoupon.getText().toString();
+        strBio = etBio.getText().toString();
+
 
 
         if(!TextUtils.isEmpty(strPassword)&&strPassword.length()>8&& Utility.isValidPassword(strPassword)){
@@ -207,7 +210,7 @@ public class Register_General_Details extends AppCompatActivity {
     private void doSignup(){
         if(Utility.isNetworkAvailable(mActivity)) {
             Utility.showDialog(mActivity);
-            apiService.doSignup(new RegisterUserRequest(EmailStr, strMobile, strFirstName, strLastName, strFirstName + " " + strLastName, strGender, strDob, strCity, "", strCoupon, "", Google_id, FB_Id, strPassword)).enqueue(new Callback<LoginResponse>() {
+            apiService.doSignup(new RegisterUserRequest(EmailStr, strMobile, strFirstName, strLastName, strFirstName + " " + strLastName, strGender, strDob, strCity, "", strCoupon, "", Google_id, FB_Id, strPassword,"panelist",strBio)).enqueue(new Callback<LoginResponse>() {
                 @Override
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     try{
@@ -234,11 +237,15 @@ public class Register_General_Details extends AppCompatActivity {
                         String facebookUserID = data.facebookUserID;
                         String date = data.date;
                         String v = data.v;
+                        String bio = data.bio;
                         SharedPreferencesRepository.getDataManagerInstance().setIsLoggedIn(true);
-                        SharedPreferencesRepository.saveUserDetails(id, email, mobile, firstName, lastName, fullName, gender, dob, city, refferalBy, referCode, profileImage, googleId, facebookUserID, date, v, token);
+                        SharedPreferencesRepository.saveUserDetails(id, email, mobile, firstName, lastName, fullName, gender, dob, city, refferalBy, referCode, profileImage, googleId, facebookUserID, date, v, token,bio);
                         Utility.hideDialog(mActivity);
                         Toast.makeText(mActivity, "Login Successfully!!!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(mActivity, MainHomeActivity.class);
+                      /*  Intent intent = new Intent(mActivity, MainHomeActivity.class);
+                        startActivity(intent);
+                        finish(); */
+                        Intent intent = new Intent(mActivity, HomeAct.class);
                         startActivity(intent);
                         finish();
 

@@ -2,7 +2,9 @@ package com.qdegrees.utils;
 
 public class Constants {
     // live server  url
-    public static final String API_BASE_URL = "https://doyoursurvey.com:3002/";
+   // public static final String API_BASE_URL = "https://doyoursurvey.com:3002/";
+    //public static final String API_BASE_URL = "https://103.231.8.86:3009/";
+    public static final String API_BASE_URL = "https://demo.doyoursurvey.com:3009";
     //local End Poitns
     //  public static final String ENDPOINT = API_BASE_URL + "/apna_godam/trunk/api/";
     // live server

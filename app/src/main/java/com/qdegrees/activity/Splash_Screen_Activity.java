@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
@@ -26,45 +29,41 @@ import static com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE
 public class Splash_Screen_Activity extends AppCompatActivity {
     Activity mActivity;
     Handler handler;
-    TextView PoweredByText;
-    public static int MY_REQUEST_CODE=12;
-    AppUpdateManager appUpdateManager;
+    CardView cvChoose;
+    LinearLayout linChoose;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         mActivity=this;
-        PoweredByText=findViewById(R.id.tv_splash_poweredby);
-        PoweredByText.setText(Html.fromHtml(mActivity.getResources().getString(R.string.PoweredBy)));
-        PoweredByText.setMovementMethod(LinkMovementMethod.getInstance());
-        /*appUpdateManager = AppUpdateManagerFactory.create(mActivity);
-        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
-        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                    && appUpdateInfo.isUpdateTypeAllowed(IMMEDIATE)) {
+        cvChoose=findViewById(R.id.cv_welcome_ChooseCategory);
+        linChoose=findViewById(R.id.lin_choose_layout);
 
-                try {
-                    appUpdateManager.startUpdateFlowForResult(appUpdateInfo, IMMEDIATE, mActivity, MY_REQUEST_CODE);
-                }catch (IntentSender.SendIntentException e){
-                    e.printStackTrace();
-                    HandlerMethod();
-                }
-                // Request the update.
+        linChoose.setVisibility(View.GONE);
+
+     /*    if(SharedPreferencesRepository.getDataManagerInstance().isLoggedIn()){
+             linChoose.setVisibility(View.GONE);
+             HandlerMethod();
             }else{
-                HandlerMethod();
+             linChoose.setVisibility(View.VISIBLE);
             }
-        });
 
-*/
+         cvChoose.setOnClickListener(v -> {
+             Intent intent= new Intent(mActivity,ChooseYourCategory_Act.class);
+             startActivity(intent);
+             finish();
+         });*/
         HandlerMethod();
+
+
     }
-
-
     private void HandlerMethod(){
         handler = new Handler();
         handler.postDelayed(() -> {
+
             if(SharedPreferencesRepository.getDataManagerInstance().isLoggedIn()){
-                Intent intent = new Intent(mActivity, MainHomeActivity.class);
+                Intent intent = new Intent(mActivity, HomeAct.class);
                 startActivity(intent);
                 finish();
             }else{
@@ -74,40 +73,24 @@ public class Splash_Screen_Activity extends AppCompatActivity {
             }
 
 
+
+         /*   Intent intent = new Intent(mActivity, HomeAct.class);
+            startActivity(intent);
+            finish();*/
+
+          /*  Intent intent = new Intent(mActivity, MainHomeActivity.class);
+            startActivity(intent);
+            finish();*/
+            /*if(SharedPreferencesRepository.getDataManagerInstance().isLoggedIn()){
+                Intent intent = new Intent(mActivity, MainHomeActivity.class);
+                startActivity(intent);
+                finish();
+            }else{
+                Intent intent = new Intent(mActivity,Authenticator_Activity.class);
+                startActivity(intent);
+                finish();
+            }*/
         }, 3000);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == MY_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                HandlerMethod();
-            }
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        /*appUpdateManager
-                .getAppUpdateInfo()
-                .addOnSuccessListener(
-                        appUpdateInfo -> {
-
-                            if (appUpdateInfo.updateAvailability()
-                                    == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
-                                try {
-                                    // If an in-app update is already running, resume the update.
-                                    appUpdateManager.startUpdateFlowForResult(
-                                            appUpdateInfo,
-                                            IMMEDIATE,
-                                            mActivity,
-                                            MY_REQUEST_CODE);
-                                }catch (IntentSender.SendIntentException e){
-                                    e.printStackTrace();
-                                }
-                            }
-                        });*/
-    }
 }

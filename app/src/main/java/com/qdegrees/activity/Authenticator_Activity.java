@@ -38,6 +38,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
@@ -67,9 +68,9 @@ import retrofit2.Response;
 
 public class Authenticator_Activity extends AppCompatActivity {
     Activity mActivity;
-    TextView tvLoginPoweredby,tvLoginForgotPassword,tvLoginSignup;
+    TextView tvLoginForgotPassword,tvLoginSignup;
     String EmailStr="",PasswordStr="";
-    EditText edMail,edPassword;
+    TextInputEditText edMail,edPassword;
     CardView cv_signin,cv_googlesignin,cv_facebookSignIn;
     protected ApiService apiService;
 
@@ -89,7 +90,7 @@ public class Authenticator_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_authenticator);
+        setContentView(R.layout.act_login);
         mActivity = this;
 
         /*******App Update***************/
@@ -113,7 +114,7 @@ public class Authenticator_Activity extends AppCompatActivity {
         mGoogleSignInClient= GoogleSignIn.getClient(mActivity,gso);
     }
     private void findIds(){
-        tvLoginPoweredby=findViewById(R.id.tv_login_poweredby);
+
         tvLoginForgotPassword=findViewById(R.id.tv_login_forgotpassword);
         tvLoginSignup=findViewById(R.id.tv_login_signup);
         edMail=findViewById(R.id.et_login_email);
@@ -122,10 +123,10 @@ public class Authenticator_Activity extends AppCompatActivity {
         cv_googlesignin=findViewById(R.id.cv_login_google);
         cv_facebookSignIn=findViewById(R.id.cv_login_facebook);
 
-        tvLoginPoweredby.setText(Html.fromHtml(mActivity.getResources().getString(R.string.PoweredBy)));
+      /*  tvLoginPoweredby.setText(Html.fromHtml(mActivity.getResources().getString(R.string.PoweredBy)));
         tvLoginPoweredby.setMovementMethod(LinkMovementMethod.getInstance());
         tvLoginForgotPassword.setText(Html.fromHtml(mActivity.getResources().getString(R.string.login_createAccount)));
-
+*/
         tvLoginSignup.setText(Html.fromHtml(mActivity.getResources().getString(R.string.login_signup)));
         cv_signin.setOnClickListener(v->{
             if(Utility.isNetworkAvailable(mActivity)){
@@ -181,7 +182,7 @@ public class Authenticator_Activity extends AppCompatActivity {
     private void doLogin(){
         if(Utility.isNetworkAvailable(mActivity)) {
             Utility.showDialog(mActivity);
-            apiService.doLogin(new LoginPostData(EmailStr, PasswordStr)).enqueue(new Callback<LoginResponse>() {
+            apiService.doLogin(new LoginPostData(EmailStr, PasswordStr,"user")).enqueue(new Callback<LoginResponse>() {
                 @Override
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     try {
@@ -208,12 +209,15 @@ public class Authenticator_Activity extends AppCompatActivity {
                             String facebookUserID = data.facebookUserID;
                             String date = data.date;
                             String v = data.v;
+                            String bio = data.bio;
                             SharedPreferencesRepository.getDataManagerInstance().setIsLoggedIn(true);
-                            SharedPreferencesRepository.saveUserDetails(id, email, mobile, firstName, lastName, fullName, gender, dob, city, refferalBy, referCode, profileImage, googleId, facebookUserID, date, v, token);
+                            SharedPreferencesRepository.saveUserDetails(id, email, mobile, firstName, lastName, fullName, gender, dob, city, refferalBy, referCode, profileImage, googleId, facebookUserID, date, v, token,bio);
                             Utility.hideDialog(mActivity);
                             Toast.makeText(mActivity, "Login Successfully!!!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(mActivity, MainHomeActivity.class);
+                            Intent intent = new Intent(mActivity, HomeAct.class);
                             startActivity(intent);
+                            /*Intent intent = new Intent(mActivity, MainHomeActivity.class);
+                            startActivity(intent);*/
                             finish();
 
 
@@ -476,11 +480,13 @@ public class Authenticator_Activity extends AppCompatActivity {
                             String date = data.date;
                             String v = data.v;
                             SharedPreferencesRepository.getDataManagerInstance().setIsLoggedIn(true);
-                            SharedPreferencesRepository.saveUserDetails(id, email, mobile, firstName, lastName, fullName, gender, dob, city, refferalBy, referCode, profileImage, googleId, facebookUserID, date, v, token);
+                            SharedPreferencesRepository.saveUserDetails(id, email, mobile, firstName, lastName, fullName, gender, dob, city, refferalBy, referCode, profileImage, googleId, facebookUserID, date, v, token,"");
                             Utility.hideDialog(mActivity);
                             Toast.makeText(mActivity, "Login Successfully!!!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(mActivity, MainHomeActivity.class);
+                            Intent intent = new Intent(mActivity, HomeAct.class);
                             startActivity(intent);
+                            /*Intent intent = new Intent(mActivity, MainHomeActivity.class);
+                            startActivity(intent);*/
                             finish();
 
 

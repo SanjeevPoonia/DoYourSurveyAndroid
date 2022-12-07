@@ -10,10 +10,15 @@ public class LoginPostData {
     @SerializedName("password")
     @Expose
     private String password;
+    @SerializedName("userType")
+    @Expose
+    private String userType;
 
-    public LoginPostData(String email, String password) {
+    public LoginPostData(String email, String password,String userType) {
         this.email = email;
         this.password = password ;
+        this.userType=userType;
+
     }
 }
 

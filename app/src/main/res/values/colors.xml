@@ -10,8 +10,8 @@
 
 
 
-    <color name="colorPrimary">#5271FF</color>
-    <color name="colorPrimaryDark">#3053F4</color>
+    <color name="colorPrimary">#354C9E</color>
+    <color name="colorPrimaryDark">#2A3C7C</color>
     <color name="colorPrimaryCenter">#516FF8</color>
     <color name="colorAccent">#FF00A1</color>
 
@@ -27,12 +27,36 @@
 
     <color name="refer_card_end">#647FFA</color>
 
-    <color name="Signout_start">#FF00A1</color>
-    <color name="Signout_end">#CF0183</color>
+    <color name="Signout_start">#F47321</color>
+    <color name="Signout_end">#BD4C04</color>
 
     <color name="text_white_low">#EAE7E7</color>
 
     <color name="refer_survey_end_color">#FD2AAF</color>
+
+
+    <!-- New Design Colors-->
+
+    <color name="wel_back">#F2F6FA</color>
+    <color name="pro_color">#F47321</color>
+    <color name="selecor_storke">#C6C6C6</color>
+    <color name="disable_btn">#D8D8D8</color>
+    <color name="get_touch_back">#F4F8FB</color>
+
+    <color name="edit_hint">#C6C6C6</color>
+    <color name="icon_unselected">#707070</color>
+    <color name="quick_text_color">#666666</color>
+    <color name="dash_stats_solid">#10F47321</color>
+    <color name="dash_stats_title">#354052</color>
+
+    <color name="reedem_stats_solid">#35354052</color>
+    <color name="reedem_stats_stoke">#009DFF</color>
+
+    <color name="survey_list_back">#F4F8FB</color>
+
+    <color name="light_pro">#35F47321</color>
+    <color name="light_back">#FFF4ED</color>
+
 
 
 </resources>

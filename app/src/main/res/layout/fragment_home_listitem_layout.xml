@@ -3,91 +3,113 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-   android:layout_marginBottom="02pt"
+    android:orientation="vertical"
+    android:layout_marginBottom="02pt"
+    android:background="@color/survey_list_back"
+    android:padding="05dp"
     >
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_weight="0.2"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="02pt"
-        app:cardCornerRadius="25sp"
-        app:cardElevation="07dp"
-        android:elevation="4dp"
-        app:cardBackgroundColor="@color/cardview_light_background"
-        android:dividerHeight="0.0px"
-        android:clipToPadding="false"
-        android:clipChildren="false"
-        app:cardPreventCornerOverlap="false"
-        android:id="@+id/cv_fragment_home_Pointslistitem"
-        android:layout_gravity="center"
-        >
+        android:textStyle="bold"
+        android:textColor="@color/dash_stats_title"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/tv_fragmentHomeListItem_SurveyName"
+        android:padding="01pt"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="05pt"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:padding="01pt"
+            android:text="@string/Earn_Point"
+            />
+        <TextView
+            android:id="@+id/tv_fragmentHomeListItem_Points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="02dp"
+            android:layout_marginEnd="02pt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/yellow"
+            android:textStyle="bold"
+            android:gravity="center"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-            <TextView
-                android:id="@+id/tv_fragmentHomeListItem_Points"
+            android:layout_weight="1"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="39dp"
+            android:layout_height="35dp"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="8dp"
+            android:elevation="8dp"
+            app:cardBackgroundColor="@color/pro_color"
+            android:dividerHeight="0.0px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:cardPreventCornerOverlap="false"
+            android:id="@+id/cv_Share"
+            >
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:orientation="vertical"
+               android:gravity="center">
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_dash_share"
+                   />
+           </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="90dp"
+            android:layout_height="35dp"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="8dp"
+            android:elevation="8dp"
+            app:cardBackgroundColor="@color/pro_color"
+            android:dividerHeight="0.0px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:cardPreventCornerOverlap="false"
+            android:id="@+id/cv_Start"
+            android:layout_marginStart="10pt"
+            android:layout_gravity="end"
+            >
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="02pt"
-                android:paddingTop="05pt"
-                android:paddingRight="02pt"
-                android:paddingBottom="05pt"
-                android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/yellow"
-                android:textStyle="bold"
-                android:gravity="center"/>
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Start"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+
+                    />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 
-    </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.8"
-        android:layout_margin="02pt"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="05dp"
-        android:elevation="4dp"
-        app:cardBackgroundColor="@color/cardview_light_background"
-        android:dividerHeight="0.0px"
-        android:clipToPadding="false"
-        android:clipChildren="false"
-        app:cardPreventCornerOverlap="false"
-        android:id="@+id/cv_fragment_home_listitem"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="05pt">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:id="@+id/tv_fragmentHomeListItem_SurveyName"
-                android:padding="01pt"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:textColor="@color/colorAccent"
-                android:text="Answer Survey"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:id="@+id/tv_fragmenthomeListItem_AnswerSurvey"
-                />
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

@@ -88,7 +88,7 @@ public class SharedPreferencesRepository implements Tags {
     public static void saveUserDetails(String userId, String emailStr, String mobileStr, String firstName,
                                        String lastName,String fullName,String gender,
                                        String dob,String city,String refferalBy,String referCode,
-                                       String profileImage,String googleId,String facebookId,String date,String V,String rememberToken){
+                                       String profileImage,String googleId,String facebookId,String date,String V,String rememberToken,String bio){
         loginPrefEditor.putString(UserId,userId);
         loginPrefEditor.putString(EmailStr,emailStr);
         loginPrefEditor.putString(MobileStr,mobileStr);
@@ -106,9 +106,68 @@ public class SharedPreferencesRepository implements Tags {
         loginPrefEditor.putString(Date,date);
         loginPrefEditor.putString(v,V);
         loginPrefEditor.putString(RememberToken,rememberToken);
+        loginPrefEditor.putString(Bio,bio);
         loginPrefEditor.commit();
 
 
+    }
+
+    public static String getSessionProfileImage() {
+        String value = loginSharedPreferences.getString(ProfileImage, null);
+        if (value == null) {
+            return "";
+        } else {
+            return value;
+        }
+    }
+    public static String getSessionGoogleId() {
+        String value = loginSharedPreferences.getString(GoogleId, null);
+        if (value == null) {
+            return "";
+        } else {
+            return value;
+        }
+    }
+    public static String getSessionFaceBookId() {
+        String value = loginSharedPreferences.getString(FacebookId, null);
+        if (value == null) {
+            return "";
+        } else {
+            return value;
+        }
+    }
+    public static String getSessionGender() {
+        String value = loginSharedPreferences.getString(Gender, null);
+        if (value == null) {
+            return "";
+        } else {
+            return value;
+        }
+    }
+    public static String getSessionDOB() {
+        String value = loginSharedPreferences.getString(Dob, null);
+        if (value == null) {
+            return "";
+        } else {
+            return value;
+        }
+    }
+    public static String getSessionBio() {
+        String value = loginSharedPreferences.getString(Bio, null);
+        if (value == null) {
+            return "";
+        } else {
+            return value;
+        }
+    }
+
+    public static String getSessionCity() {
+        String value = loginSharedPreferences.getString(City, null);
+        if (value == null) {
+            return "";
+        } else {
+            return value;
+        }
     }
     public static String getSessionUserId() {
         String value = loginSharedPreferences.getString(UserId, null);
