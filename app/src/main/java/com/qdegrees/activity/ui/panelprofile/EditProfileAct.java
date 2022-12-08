@@ -135,6 +135,7 @@ public class EditProfileAct extends AppCompatActivity implements ProgressRequest
       googleIdStr =SharedPreferencesRepository.getDataManagerInstance().getSessionGoogleId();
       faceBookId =SharedPreferencesRepository.getDataManagerInstance().getSessionFaceBookId();
 
+      Log.e("user_id",UserIdStr);
 
 
       permissions.add(READ_EXTERNAL_STORAGE);

@@ -42,66 +42,43 @@ import retrofit2.http.Part;
 public interface ApiService {
     @POST("client/login")
     Call<LoginResponse> doLogin(@Body LoginPostData loginPostData);
-
     @POST("survey/getDynSurvey")
     Call<DashboardResponse>getDashboardData(@Body DashboardPostData dashboardPostData);
-
     @POST("client/sendOtpForVerifyEmail")
     Call<SignupVerifyEmailReqResponse> getVerifyOtp(@Body SignupVerifyEmailRequest signupVerifyEmailRequest);
-
     @POST("client/verifyOtpForEmail")
     Call<VerifyOtpResponse> doVerifyOtp(@Body VerifyOtpRequest verifyOtpRequest);
-
     @POST("client/signup")
     Call<LoginResponse>doSignup(@Body RegisterUserRequest registerUserRequest);
-
     @POST("user-panel-profile/dashboard")
     Call<DashboardProfileResponse>getDashboardProfile(@Body DashboardPostData dashboardPostData);
-
     @POST("survey/getRedeemedPointHistory")
     Call<PointRedeemedHistory_Response>getRedeemedHistory(@Body RewardPostData rewardPostData);
-
     @POST("survey/redeemPoint")
     Call<ReedemPointResponse>DoReedemPoints(@Body ReedemPointsRequest reedemPointsRequest);
-
     @POST("survey/SubmitSurvey")
     Call<ReedemPointResponse>DoSubmitSurvey(@Body SubmitSurvey_Request submitSurvey_request);
-
     @POST("user-panel-profile/userProfileQuestion")
     Call<ProfileQuestion_Response>getProfileQuestion(@Body ProfileQuestion_Request profileQuestion_request);
-
     @POST("user-panel-profile/userProfileTaskSubmit")
     Call<ReedemPointResponse>DoProfileSubmit(@Body ProfileSubmit_Request profileSubmit_request);
-
     @POST("client/changePassword")
     Call<ReedemPointResponse>DoChangePassword(@Body ChangePassword_Request changePassword_request);
-
     @POST("dashboard/referFriend")
     Call<ReedemPointResponse>DoReferFriend(@Body ReferAFriend_Request referAFriend_request);
-
     @POST("client/isRegistred")
     Call<LoginResponse>doSocialLogin(@Body SocialLogin_Request socialLogin_request);
-
     @GET("survey/getReferedEligibleSurvey")
     Call<ShareableSurveyResponse>getShareableSurveyList();
     @POST("survey/generateSurveyReferCode")
     Call<GenerateSurveyReferCodeResponse>generateSurveyReferCode(@Body GenerateSurveyReferCodeRequest generateSurveyReferCodeRequest);
     @POST("survey/getGenerateSurveyReferCode")
     Call<GeneratedSurveyReferCode_Response>getGeneratedReferalCode(@Body GenerateSurveyReferCodeRequest generateSurveyReferCodeRequest);
-
-
     @POST("survey/getDynReferedSurvey")
     Call<DashboardSurveyResponse>getDashboardSurveyList(@Body DashboardPostData dashboardPostData);
-
     @POST("dashboard/updateProfile")
     Call<UpdateProfileResponse> updateProfile(@Body UpdateProfilePostData updateProfilePostData);
-
-
     @Multipart
     @POST("dashboard/changeProfileImg")
     Call<ProfileUploadResponse> uploadProfileImage(@Part("id")String id, @Part MultipartBody.Part image);
-
-
-
-
 }
