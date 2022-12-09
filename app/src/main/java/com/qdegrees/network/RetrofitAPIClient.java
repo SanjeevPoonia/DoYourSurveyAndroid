@@ -126,6 +126,6 @@ public class RetrofitAPIClient {
     }
 
     public static MultipartBody.Part getImageFilePartProgress(ProgressRequestBody fileBody){
-        return MultipartBody.Part.createFormData("image",("dys" + System.currentTimeMillis()+".jpg"),fileBody);
+        return MultipartBody.Part.createFormData("image",("dys" + System.currentTimeMillis()+".jpeg"),fileBody);
     }
 }

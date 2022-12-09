@@ -53,6 +53,10 @@
             android:screenOrientation="portrait"
             />
 
+        <activity android:name="com.qdegrees.activity.ui.notifications.NotificationAct"
+            android:screenOrientation="portrait"
+            />
+
 
 
         <meta-data android:name="com.facebook.sdk.ApplicationId"

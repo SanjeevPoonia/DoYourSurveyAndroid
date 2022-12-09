@@ -1,6 +1,7 @@
 package com.qdegrees.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.qdegrees.activity.ui.dashboard.DashboardFragment;
+import com.qdegrees.activity.ui.notifications.NotificationAct;
 import com.qdegrees.activity.ui.panelprofile.PanelProfile_Frag_Btm;
 import com.qdegrees.activity.ui.reedem.ReedemFragment;
 import com.qdegrees.activity.ui.referearn.ReferNEarn_Frag;
@@ -30,7 +32,7 @@ public class HomeAct extends AppCompatActivity implements BottomNavigationView.O
     CurvedBottomNavigationView bottomNavigationView;
     AppCompatTextView tvTitle;
     Activity mActivity;
-    LinearLayout logoutLayout, RedeemLayout;
+    LinearLayout logoutLayout, RedeemLayout,NotificationLayout;
     ImageView ivRedeem;
     TextView tvRedeem;
 
@@ -49,6 +51,7 @@ public class HomeAct extends AppCompatActivity implements BottomNavigationView.O
         tvTitle=findViewById(R.id.tvHomeTitle);
         bottomNavigationView=findViewById(R.id.customBottomBar);
         logoutLayout=findViewById(R.id.LogoutLL);
+        NotificationLayout=findViewById(R.id.NotificationCountLL);
         RedeemLayout= findViewById(R.id.LL_Home_Redeem);
         ivRedeem = findViewById(R.id.ivAdd);
         tvRedeem =  findViewById(R.id.tvInviteReqCount);
@@ -64,7 +67,9 @@ public class HomeAct extends AppCompatActivity implements BottomNavigationView.O
             Fragment fragment1= new SignoutFragment();
             setCurrentFragment(fragment1);
         });
-
+        NotificationLayout.setOnClickListener(v->{
+            startActivity(new Intent(mActivity, NotificationAct.class));
+        });
         RedeemLayout.setOnClickListener(v->{
             ivRedeem.setColorFilter(ContextCompat.getColor(mActivity, R.color.pro_color), android.graphics.PorterDuff.Mode.SRC_IN);
             tvRedeem.setTextColor(ContextCompat.getColor(mActivity,R.color.pro_color));

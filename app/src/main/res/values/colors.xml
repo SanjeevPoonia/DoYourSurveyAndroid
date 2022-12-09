@@ -13,7 +13,8 @@
     <color name="colorPrimary">#354C9E</color>
     <color name="colorPrimaryDark">#2A3C7C</color>
     <color name="colorPrimaryCenter">#516FF8</color>
-    <color name="colorAccent">#FF00A1</color>
+    <color name="colorAccent">#F47321</color>
+   <!--<color name="colorAccent">#FF00A1</color>-->
 
     <color name="Transparent">#00000000</color>
     <color name="view_color">#93A6A2</color>
@@ -56,6 +57,7 @@
 
     <color name="light_pro">#35F47321</color>
     <color name="light_back">#FFF4ED</color>
+    <color name="options_color">#B9ECF3</color>
 
 
 

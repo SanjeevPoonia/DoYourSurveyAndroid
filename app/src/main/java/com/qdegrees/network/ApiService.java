@@ -5,6 +5,7 @@ import com.qdegrees.network.request.ChangePassword_Request;
 import com.qdegrees.network.request.DashboardPostData;
 import com.qdegrees.network.request.GenerateSurveyReferCodeRequest;
 import com.qdegrees.network.request.LoginPostData;
+import com.qdegrees.network.request.NotificationRequest;
 import com.qdegrees.network.request.ProfileQuestion_Request;
 import com.qdegrees.network.request.ProfileSubmit_Request;
 import com.qdegrees.network.request.ReedemPointsRequest;
@@ -22,6 +23,7 @@ import com.qdegrees.network.response.DashboardSurveyResponse;
 import com.qdegrees.network.response.GenerateSurveyReferCodeResponse;
 import com.qdegrees.network.response.GeneratedSurveyReferCode_Response;
 import com.qdegrees.network.response.LoginResponse;
+import com.qdegrees.network.response.NotificationResponse;
 import com.qdegrees.network.response.PointRedeemedHistory_Response;
 import com.qdegrees.network.response.ProfileQuestion_Response;
 import com.qdegrees.network.response.ProfileUploadResponse;
@@ -35,6 +37,7 @@ import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -76,8 +79,15 @@ public interface ApiService {
     Call<GeneratedSurveyReferCode_Response>getGeneratedReferalCode(@Body GenerateSurveyReferCodeRequest generateSurveyReferCodeRequest);
     @POST("survey/getDynReferedSurvey")
     Call<DashboardSurveyResponse>getDashboardSurveyList(@Body DashboardPostData dashboardPostData);
+
     @POST("dashboard/updateProfile")
     Call<UpdateProfileResponse> updateProfile(@Body UpdateProfilePostData updateProfilePostData);
+
+
+    @POST("common/notificationList")
+    Call<NotificationResponse> getNotificationList(@Header("x-auth-token") String reme, @Body NotificationRequest notificationRequest);
+
+
     @Multipart
     @POST("dashboard/changeProfileImg")
     Call<ProfileUploadResponse> uploadProfileImage(@Part("id")String id, @Part MultipartBody.Part image);

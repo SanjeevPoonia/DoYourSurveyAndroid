@@ -352,6 +352,10 @@ public class SurveyStart_Activity extends AppCompatActivity {
 
             }
 
+            RadioGroup.LayoutParams layoutParams = new RadioGroup.LayoutParams(
+                    RadioGroup.LayoutParams.MATCH_PARENT,
+                    RadioGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(5,10,5,10);
 
 
 
@@ -360,8 +364,11 @@ public class SurveyStart_Activity extends AppCompatActivity {
 
                 if(isShow) {
                     RadioButton rd = new RadioButton(mActivity);
+                    rd.setBackgroundColor(Color.parseColor("#B9ECF3"));
                     rd.setId(i);
                     rd.setText(options.get(i).getOptionStr());
+                    rd.setGravity(Gravity.CENTER_VERTICAL);
+                    rd.setLayoutParams(layoutParams);
                     radioGroup.addView(rd);
                 }
             }

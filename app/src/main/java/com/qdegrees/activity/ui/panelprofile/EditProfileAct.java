@@ -79,7 +79,7 @@ public class EditProfileAct extends AppCompatActivity implements ProgressRequest
    RadioButton rbMale,rbFemale,rbTrans;
 
    String fNameStr="",lNameStr="",cityStr="",mobileStr="",dobStr="",bioStr="",UserIdStr="";
-   String genderStr="",emailStr="";
+   String genderStr="",emailStr="",tokenStr="";
    String referalStr="",googleIdStr="",faceBookId="";
 
    CardView updateCv;
@@ -123,6 +123,7 @@ public class EditProfileAct extends AppCompatActivity implements ProgressRequest
 
       emailStr= SharedPreferencesRepository.getDataManagerInstance().getSessionEmail();
       UserIdStr= SharedPreferencesRepository.getDataManagerInstance().getSessionUserId();
+      tokenStr= SharedPreferencesRepository.getDataManagerInstance().getSessionRememberToken();
       fNameStr= SharedPreferencesRepository.getDataManagerInstance().getSessionname();
       lNameStr= SharedPreferencesRepository.getDataManagerInstance().getSessionLastname();
       cityStr= SharedPreferencesRepository.getDataManagerInstance().getSessionCity();
@@ -136,6 +137,7 @@ public class EditProfileAct extends AppCompatActivity implements ProgressRequest
       faceBookId =SharedPreferencesRepository.getDataManagerInstance().getSessionFaceBookId();
 
       Log.e("user_id",UserIdStr);
+      Log.e("token",tokenStr);
 
 
       permissions.add(READ_EXTERNAL_STORAGE);

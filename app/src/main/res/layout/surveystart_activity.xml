@@ -58,6 +58,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/qds_pro_logo"
+                    android:layout_marginTop="5pt"
+                    android:layout_marginBottom="5pt"
+                    />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
